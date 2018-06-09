@@ -3,7 +3,8 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
+                template="/WEB-INF/template.xhtml"
+                xmlns:showcase="http://primefaces.org/ui/showcase">
 
     <ui:define name="title">
         AccordionPanel
@@ -14,7 +15,7 @@
     </ui:define>
 
     <ui:define name="implementation">
-        
+        <!-- EXAMPLE-SOURCE-START -->
         <h:form id="form">  
             <p:growl id="msgs" showDetail="true" />
         
@@ -156,183 +157,24 @@
                 </p:tab>
             </p:accordionPanel>
         </h:form>
-                
+
+        <!-- EXAMPLE-SOURCE-END -->
     </ui:define>
 
     <ui:define name="source">
         <p:tabView>
             <p:tab title="accordionPanel.xhtml">
                 <pre name="code" class="brush:xml">
-&lt;h:form id="form"&gt;           
-    &lt;p:growl id="msgs" showDetail="true" /&gt;
-
-    &lt;h3 style="margin-top:0"&gt;Basic&lt;/h3&gt;
-    &lt;p:accordionPanel&gt;
-        &lt;p:tab title="Godfather Part I"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
-                &lt;h:outputText
-                    value="The story begins as Don Vito Corleone..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part II"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
-                &lt;h:outputText value="Francis Ford Coppola's legendary..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part III"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
-                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-    &lt;/p:accordionPanel&gt;
-
-    &lt;h3&gt;Multiple Selection&lt;/h3&gt;
-    &lt;p:accordionPanel multiple="true"&gt;
-        &lt;p:tab title="Godfather Part I"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
-                &lt;h:outputText
-                    value="The story begins as Don Vito Corleone..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part II"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
-                &lt;h:outputText value="Francis Ford Coppola's legendary..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part III"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
-                &lt;h:outputText value="After a break of more than 15 years...." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-    &lt;/p:accordionPanel&gt;
-
-    &lt;h3&gt;On-Demand Loading&lt;/h3&gt;
-    &lt;p:accordionPanel dynamic="true" cache="true"&gt;
-        &lt;p:tab title="Godfather Part I"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
-                &lt;h:outputText
-                    value="The story begins as Don Vito Corleone..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part II"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
-                &lt;h:outputText value="Francis Ford Coppola's legendary..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part III"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
-                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-    &lt;/p:accordionPanel&gt;
-
-    &lt;h3&gt;Change Event&lt;/h3&gt;
-    &lt;p:accordionPanel&gt;
-        &lt;p:ajax event="tabChange" listener="\#{tabbedView.onTabChange}" update=":form:msgs" /&gt;
-        &lt;p:ajax event="tabClose" listener="\#{tabbedView.onTabClose}" update=":form:msgs" /&gt;
-
-        &lt;p:tab title="Godfather Part I"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather1.jpg" /&gt;
-                &lt;h:outputText
-                    value="The story begins as Don Vito Corleone..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part II"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather2.jpg" /&gt;
-                &lt;h:outputText value="Francis Ford Coppola's legendary..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-        &lt;p:tab title="Godfather Part III"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-                &lt;p:graphicImage name="demo/images/godfather/godfather3.jpg" /&gt;
-                &lt;h:outputText value="After a break of more than 15 years..." /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-    &lt;/p:accordionPanel&gt;
-
-    &lt;h3&gt;DataModel&lt;/h3&gt;
-    &lt;p:accordionPanel value="\#{tabbedView.cars}" var="car"&gt;
-        &lt;p:tab title="Car - \#{car.id}"&gt;
-            &lt;h:panelGrid columns="2" cellpadding="5"&gt;
-                &lt;f:facet name="header"&gt;
-                    &lt;p:graphicImage name="demo/images/car/\#{car.brand}-big.gif" /&gt;
-                &lt;/f:facet&gt;                    
-                &lt;h:outputText value="Brand:" style="font-weight: bold" /&gt;
-                &lt;h:outputText value="\#{car.brand}" /&gt;
-
-                &lt;h:outputText value="Year:" style="font-weight: bold" /&gt;
-                &lt;h:outputText value="\#{car.year}" /&gt;
-
-                &lt;h:outputText value="Color:" style="font-weight: bold" /&gt;
-                &lt;h:outputText value="\#{car.color}" /&gt;
-            &lt;/h:panelGrid&gt;
-        &lt;/p:tab&gt;
-    &lt;/p:accordionPanel&gt;
-&lt;/h:form&gt;
+${showcase:getFileContent('/ui/panel/accordionPanel.xhtml')}
                 </pre>
             </p:tab>
 
             <p:tab title="TabbedView.java">
                 <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.panel;
-
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-
-import org.primefaces.event.TabChangeEvent;
-import org.primefaces.event.TabCloseEvent;
-import org.primefaces.showcase.domain.Car;
-
-@ManagedBean
-public class TabbedView {
-    
-    private List&lt;Car&gt; cars;
-
-    @PostConstruct
-    public void init() {
-        cars = new ArrayList&lt;Car&gt;();
-        cars.add(new Car("Y25YIH5", "Fiat", 2014, "Black", 10000, true));
-        cars.add(new Car("JHF261G", "BMW", 2013, "Blue", 50000, true));
-        cars.add(new Car("HSFY23H", "Ford", 2012, "Black", 35000, false));
-        cars.add(new Car("GMDK353", "Volvo", 2014, "White", 40000, true));
-        cars.add(new Car("345GKM5", "Jaguar", 2011, "Gray", 48000, false));
-    }
-    
-    public List&lt;Car&gt; getCars() {
-        return cars;
-    }
-    
-    public void onTabChange(TabChangeEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-        
-    public void onTabClose(TabCloseEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-}
-
+${showcase:getFileContent('/org/primefaces/showcase/view/panel/TabbedView.java')}
                 </pre>
             </p:tab>
-            
         </p:tabView>
-
     </ui:define>
 
 </ui:composition>
