@@ -28,6 +28,8 @@ public class FileContentSettings {
     private String[] startMarkers = null;
     private String[] endMarkers = null;
     private boolean showLineWithMarker = false;
+    private boolean includeMarker = false;
+    private String type;
 
     public String[] getStartMarkers() {
         if (startMarkers == null) return new String[0];
@@ -43,6 +45,14 @@ public class FileContentSettings {
         return showLineWithMarker;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public boolean isIncludeMarker() {
+        return includeMarker;
+    }
+
     public FileContentSettings setStartMarkers(String... startMarkers) {
         this.startMarkers = startMarkers;
         return this;
@@ -55,6 +65,16 @@ public class FileContentSettings {
 
     public FileContentSettings setShowLineWithMarker(boolean showLineWithMarker) {
         this.showLineWithMarker = showLineWithMarker;
+        return this;
+    }
+
+    public FileContentSettings setIncludeMarker(boolean includeMarker) {
+        this.includeMarker = includeMarker;
+        return this;
+    }
+
+    public FileContentSettings setType(String type) {
+        this.type = type;
         return this;
     }
 }

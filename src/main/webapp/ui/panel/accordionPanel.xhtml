@@ -15,7 +15,6 @@
     </ui:define>
 
     <ui:define name="implementation">
-        <!-- EXAMPLE-SOURCE-START -->
         <h:form id="form">  
             <p:growl id="msgs" showDetail="true" />
         
@@ -158,23 +157,6 @@
             </p:accordionPanel>
         </h:form>
 
-        <!-- EXAMPLE-SOURCE-END -->
-    </ui:define>
-
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="accordionPanel.xhtml">
-                <pre name="code" class="brush:xml">
-${showcase:getFileContent('/ui/panel/accordionPanel.xhtml')}
-                </pre>
-            </p:tab>
-
-            <p:tab title="TabbedView.java">
-                <pre name="code" class="brush:java">
-${showcase:getFileContent('/org/primefaces/showcase/view/panel/TabbedView.java')}
-                </pre>
-            </p:tab>
-        </p:tabView>
     </ui:define>
 
 </ui:composition>

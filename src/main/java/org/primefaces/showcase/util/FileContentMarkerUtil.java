@@ -21,115 +21,103 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.primefaces.util.ComponentUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.omnifaces.util.Faces;
 
 /**
  * FileContentMarkerUtil
  *
- * @author  Pavol Slany / last modified by $Author$
+ * @author Pavol Slany / last modified by $Author$
  * @version $Revision$
- * @since   0.5
+ * @since 0.5
  */
 public class FileContentMarkerUtil {
 
-	private static FileContentSettings javaFileSettings =
-	    new FileContentSettings().setStartMarkers("@ManagedBean", "@RequestScoped", "@ViewScoped", "@SessionScoped",
-	                                              "@FacesConverter", " class ", " enum ").setShowLineWithMarker(true);
+    private static FileContentSettings javaFileSettings = new FileContentSettings()
+            .setType("java")
+            .setStartMarkers("@ManagedBean", "@RequestScoped", "@ViewScoped", "@SessionScoped", "@FacesConverter", " class ", " enum ")
+            .setIncludeMarker(true);
 
-	private static FileContentSettings xhtmlFileSettings =
-	    new FileContentSettings().setStartMarkers("EXAMPLE_SOURCE_START", "EXAMPLE-SOURCE-START")
-	                             .setEndMarkers("EXAMPLE_SOURCE_END", "EXAMPLE-SOURCE-END").setShowLineWithMarker(false);
+    private static FileContentSettings xhtmlFileSettings = new FileContentSettings()
+            .setType("xml")
+            .setStartMarkers("EXAMPLE-SOURCE-START", "<ui:define name=\"implementation\">")
+            .setEndMarkers("EXAMPLE-SOURCE-END", "</ui:define>")
+            .setIncludeMarker(false);
 
-	public static String readFileContent(String fileName, InputStream is) {
-		try {
-			if (fileName.endsWith(".java")) {
-				return readFileContent(is, javaFileSettings);
-			}
+    public static FileContent readFileContent(String fullPathToFile, InputStream is, boolean readBeans) {
+        try {
+            String fileName = StringUtils.substringAfterLast(fullPathToFile, "/");
+            if (fullPathToFile.endsWith(".java")) {
+                return readFileContent(fileName, is, javaFileSettings, readBeans);
+            }
 
-			if (fileName.endsWith(".xhtml")) {
-				return readFileContent(is, xhtmlFileSettings);
-			}
+            if (fullPathToFile.endsWith(".xhtml")) {
+                return readFileContent(fileName, is, xhtmlFileSettings, readBeans);
+            }
 
-			// Show all files
-			return readFileContent(is, new FileContentSettings());
-		} catch (Exception e) {
-			throw new IllegalStateException("Internal error: file " + fileName + " could not be read", e);
-		}
-	}
+            throw new UnsupportedOperationException();
+        } catch (Exception e) {
+            throw new IllegalStateException("Internal error: file " + fullPathToFile + " could not be read", e);
+        }
+    }
 
-	private static String readFileContent(InputStream inputStream, FileContentSettings settings) throws IOException {
-		if (inputStream == null) {
-			return null;
-		}
+    private static FileContent readFileContent(String fileName, InputStream inputStream, FileContentSettings settings, boolean readBeans) throws IOException {
+        StringBuilder content = new StringBuilder();
+        List<FileContent> javaFiles = new ArrayList<>();
 
-		StringBuilder sbBeforeStartMarker = new StringBuilder();
-		StringBuilder sbBeforeEndMarker = new StringBuilder();
-		String markerLineStart = null;
-		String markerLineEnd = null;
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            boolean started = false;
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-		String line;
+            while ((line = br.readLine()) != null) {
+                if (!started) {
+                    started = containMarker(line, settings.getStartMarkers());
+                    if (!started || !settings.isIncludeMarker()) {
+                        continue;
+                    }
+                }
 
-		StringBuilder sb = sbBeforeStartMarker;
-		while ((line = br.readLine()) != null) {
-			// if is before first start marker
-			if (markerLineStart == null && containMarker(line, settings.getStartMarkers())) {
-				markerLineStart = "\n" + line;
-				sb = sbBeforeEndMarker;
+                // if is before first end marker
+                if (containMarker(line, settings.getEndMarkers())) {
+                    break; // other content file is ignored
+                }
 
-				continue;
-			}
+                if (readBeans && line.contains("#{")) {
+                    String[] targets = StringUtils.substringBetween(line, "#{", "}").split("\\.");
+                    if (targets.length > 1) {
+                        Object bean = Faces.evaluateExpressionGet("#{" + targets[0] + "}");
+                        if (bean != null) {
+                            String javaFileName = StringUtils.substringAfterLast(bean.getClass().getName(), ".") + ".java";
+                            if (!javaFiles.contains(new FileContent(javaFileName, null, null, null))) {
+                                String path = "/" + StringUtils.replaceAll(bean.getClass().getName(), "\\.", "/") + ".java";
+                                FileContent javaContent = readFileContent(javaFileName,
+                                                                          FileContentMarkerUtil.class.getResourceAsStream(path),
+                                                                          javaFileSettings,
+                                                                          false);
+                                javaFiles.add(javaContent);
+                            }
+                        }
+                    }
+                }
 
-			// if is before first end marker
-			if (containMarker(line, settings.getEndMarkers())) {
-				markerLineEnd = "\n" + line;
+                content.append("\n");
+                content.append(line);
+            }
+        }
 
-				break; // other content file is ignored
-			}
+        return new FileContent(fileName, content.toString().trim(), settings.getType(), javaFiles);
+    }
 
-			sb.append("\n");
-			sb.append(line);
-		}
+    private static boolean containMarker(String line, String[] markers) {
+        for (String marker : markers) {
+            if (line.contains(marker)) {
+                return true;
+            }
+        }
 
-		// if both (START and END) markers are in file
-		if (markerLineStart != null && markerLineEnd != null) {
-			if (settings.isShowLineWithMarker()) {
-				sbBeforeEndMarker.append(markerLineEnd);
-				sbBeforeEndMarker.insert(0, markerLineStart);
-			}
-
-			return sbBeforeEndMarker.toString().trim();
-		}
-
-		// if only START marker is in file
-		if (markerLineStart != null) {
-			if (settings.isShowLineWithMarker()) {
-				sbBeforeEndMarker.insert(0, markerLineStart);
-			}
-
-			return sbBeforeEndMarker.toString().trim();
-		}
-
-		// if only END marker is in file
-		if (settings.isShowLineWithMarker()) {
-			sbBeforeStartMarker.append(markerLineEnd);
-		}
-
-		return sbBeforeStartMarker.toString().trim();
-	}
-
-	private static boolean containMarker(String line, String[] markers) {
-		for (String marker : markers) {
-			if (ComponentUtils.isValueBlank(marker)) {
-				continue;
-			}
-
-			if (line.contains(marker)) {
-				return true;
-			}
-		}
-
-		return false;
-	}
+        return false;
+    }
 }
