@@ -6,198 +6,200 @@
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="content">
-        <div id="home">
-            <div class="hero">
-                <div class="header">
-                    <span class="highlighted-header">The Most Complete User Interface Suite</span>
-                    <span class="regular-header">for JavaServer Faces</span>
+        <div class="homepage">
+            <div class="introduction">
+                <div class="introduction-header">
+                    <h1>The Most Complete User Interface Suite</h1>
+                    <p class="regular-header">for JavaServer Faces</p>
                 </div>
     
-                <a href="https://www.primefaces.org/downloads"><p:commandButton type="button" value="DOWNLOAD"/></a>
-                <a href="https://www.primefaces.org/documentation"><p:commandButton type="button" value="DOCUMENTATION" class="secondary"/></a>
+                <p:button type="button" value="GET STARTED" icon="fa fa-download" outcome="/getstarted"/>
+                <p:button type="button" value="THEMES" class="secondary" href="https://www.primefaces.org/themes/" icon="fa fa-paint-brush"/>
             </div>
             
             <div class="why-primefaces">
-                <span class="info-header">Why PrimeFaces?</span>
-                <span class="sub-info">Congratulations! 🎉 Your quest to find the UI library for JavaServer Faces is complete.</span>
-                <span class="info">PrimeFaces is a collection of rich UI components for JavaServer Faces. All widgets are open source and free to use under Apache License. PrimeFaces is developed by PrimeTek Informatics, a vendor with years of expertise in developing open source UI solutions. For project news and updates, please follow us on <a href="https://www.twitter.com/primefaces" target="_blank"><span class="link">Twitter</span></a> and visit <a href="https://www.primefaces.org/blog" target="_blank"><span class="link">our blog</span></a>.</span>
+                <h2>Why PrimeFaces?</h2>
+                <p>Congratulations! 🎉 Your quest to find the UI library for JavaServer Faces is complete.</p>
+                <p>PrimeFaces is a collection of rich UI components for JavaServer Faces. All widgets are open source and free to use under Apache License. 
+                    PrimeFaces is developed by PrimeTek Informatics, a vendor with years of expertise in developing open source UI solutions. 
+                    For project news and updates, please follow us on <a href="https://www.twitter.com/primefaces" target="_blank"><span class="link">Twitter</span></a> and visit 
+                    <a href="https://www.primefaces.org/blog" target="_blank"><span class="link">our blog</span></a>.</p>
             </div>
 
             <div class="ui-g features">
-                    <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
-                        <p:graphicImage name="images/icon-components.svg" library="showcase" />
-                        <span class="feature-header">80+ COMPONENTS</span>
-                        <span class="feature-info">The most complete set of native widgets featuring 80+ easy to use components for all your UI requirements.</span>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
-                        <p:graphicImage name="images/icon-github.svg" library="showcase" />
-                        <span class="feature-header">OPEN SOURCE</span>
-                        <span class="feature-info">Hosted at GitHub, all widgets are open source and free to use under MIT license. Feel the power of open source.</span>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
-                        <p:graphicImage name="images/icon-productivity.svg" library="showcase" />
-                        <span class="feature-header">PRODUCTIVITY</span>
-                        <span class="feature-info">Allocate your valuable time to business logic rather than dealing with the complex user interface requirements.</span>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
-                            <p:graphicImage name="images/icon-themes.svg" library="showcase" />
-                            <span class="feature-header">THEMES</span>
-                        <span class="feature-info">Don’t get tied up in just one look and feel. Choose from a variety of options including material and flat design.</span>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
-                            <p:graphicImage name="images/icon-templates.svg" library="showcase" />
-                            <span class="feature-header">TEMPLATES</span>
-                        <span class="feature-info">Professionally designed highly customizable native Angular CLI application templates to get you started in no time. </span>
-                    </div>
-                    <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
-                            <p:graphicImage name="images/icon-mobile.svg" library="showcase" />
-                            <span class="feature-header">MOBILE</span>
-                        <span class="feature-info">Enhanced mobile user experience with touch optimized responsive design elements.</span>
-                    </div>
-                
-            </div>
-
-            <div class=" users">
-                <div class="ui-g users-panel">
-                    <div class="ui-g-12 user-header">
-                        <span class="section-header">Key Users</span>
-                        <span class="info-users">Open source products of PrimeTek are used all around the world by 1M+ developers in Fortune 500 companies, corporations, government and educational institutions.</span>
-                    </div>
-                    
-                    <div class="ui-g-12 user-list">
-                        <ul>
-                            <li>
-                                <p:graphicImage name="images/fox.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/airbus.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/bank-of-america.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/mercedes.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/ebay.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/ford.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/vw.svg" library="showcase" />
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p:graphicImage name="images/unicredit.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/lufthansa.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/bmw.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/verizon.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/sap.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/amex.svg" library="showcase" />
-                            </li>
-                            <li>
-                                <p:graphicImage name="images/viacom.svg" library="showcase" />
-                            </li>
-                        </ul>
-                    </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
+                    <p:graphicImage name="images/icon-components.svg" library="showcase" />
+                    <span class="feature-header">100+ COMPONENTS</span>
+                    <span class="feature-info">The most complete set of UI Components featuring 100+ easy to use components for all your UI requirements.</span>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
+                    <p:graphicImage name="images/icon-github.svg" library="showcase" />
+                    <span class="feature-header">OPEN SOURCE</span>
+                    <span class="feature-info">Hosted at GitHub, all components are open source and free to use under MIT license. Feel the power of open source.</span>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
+                    <p:graphicImage name="images/icon-productivity.svg" library="showcase" />
+                    <span class="feature-header">PRODUCTIVITY</span>
+                    <span class="feature-info">Allocate your valuable time to business logic rather than dealing with the complex user interface requirements.</span>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
+                        <p:graphicImage name="images/icon-themes.svg" library="showcase" />
+                        <span class="feature-header">THEMES</span>
+                    <span class="feature-info">Don’t get tied up in just one look and feel. Choose from a variety of options including material and flat design.</span>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
+                        <p:graphicImage name="images/icon-templates.svg" library="showcase" />
+                        <span class="feature-header">TEMPLATES</span>
+                    <span class="feature-info">Professionally designed highly customizable facelets based application templates to get you started in no time. </span>
+                </div>
+                <div class="ui-g-12 ui-md-6 ui-lg-4 feature-box">
+                        <p:graphicImage name="images/icon-mobile.svg" library="showcase" />
+                        <span class="feature-header">MOBILE</span>
+                    <span class="feature-info">Enhanced mobile user experience with touch optimized responsive design elements.</span>
                 </div>
             </div>
 
-            <div class="ui-g testimonials">
-                <span class="testimonial-header">Testimonials</span>
-                <div class="ui-g-12 ui-md-4 testimonial-box">
-                    <span class="testimonial-info">"We have successfully deployed one small JSF+Primefaces application to a major bank and are currently working on a new exciting project with Primefaces as our component library of choice for rapid front end development of our web application."</span>
-                    <span class="name">Dustin Briscoe</span>
+            <div class="users">
+                <div class="user-intro">
+                    <h2>Key Users</h2>
+                    <p>Open source products of PrimeTek are used all around the world by 1M+ developers in Fortune 500 companies, corporations, government and educational institutions.</p>
                 </div>
-                <div class="ui-g-12 ui-md-4 testimonial-box">
-                    <span class="testimonial-info">"...The PrimeFaces family of components has proved invaluable in greatly reducing time to market for both new applications and the migration of existing JSF applications. There have been quite a few "aha" moments too, when I have been able to use a component to achieve something that with other JSF component libraries simply would be impossible given the time constraints imposed..."</span>
-                    <span class="name">Andy Bailey </span>
+                   
+                <div class="user-list">
+                    <ul>
+                        <li>
+                            <p:graphicImage name="images/fox.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/airbus.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/bank-of-america.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/mercedes.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/ebay.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/ford.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/vw.svg" library="showcase" />
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p:graphicImage name="images/unicredit.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/lufthansa.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/bmw.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/verizon.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/sap.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/amex.svg" library="showcase" />
+                        </li>
+                        <li>
+                            <p:graphicImage name="images/viacom.svg" library="showcase" />
+                        </li>
+                    </ul>
                 </div>
-                <div class="ui-g-12 ui-md-4 testimonial-box">
-                    <span class="testimonial-info">"I think that PrimeFaces is the meeting of simplicity and performance. More over it’s very, VERY EASY to learn (if you have already work on JSF). The summary of PrimeFaces: Simplicity, Performance, Solid.."</span>
-                    <span class="name">Philippe Chaker</span>
+            </div>
+
+            <div class="testimonials">
+                <h2>Testimonials</h2>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-4 testimonial-box">
+                        <p>"We have successfully deployed one small JSF+Primefaces application to a major bank and are currently working on a new exciting project with Primefaces as our component library of choice for rapid front end development of our web application."</p>
+                        <span class="testimonial-name">Dustin Briscoe</span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4 testimonial-box">
+                        <p>"...The PrimeFaces family of components has proved invaluable in greatly reducing time to market for both new applications and the migration of existing JSF applications. There have been quite a few "aha" moments too, when I have been able to use a component to achieve something that with other JSF component libraries simply would be impossible given the time constraints imposed..."</p>
+                        <span class="testimonial-name">Andy Bailey </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-4 testimonial-box">
+                        <p>"I think that PrimeFaces is the meeting of simplicity and performance. More over it’s very, VERY EASY to learn (if you have already work on JSF). The summary of PrimeFaces: Simplicity, Performance, Solid.."</p>
+                        <span class="testimonial-name">Philippe Chaker</span>
+                    </div>
                 </div>
             </div>
 
             <div class="themes">
-                <div class="section-header-themes">
-                    <span class="themes-header">Premium Application Templates for PrimeFaces</span>
-                    <span class="themes-info">Create awesome applications in no time using the premium templates and impress your users.</span>     
+                <div class="themes-intro">
+                    <h2>Premium Application Templates for PrimeFaces</h2>
+                    <p>Create awesome applications in no time using the premium templates and impress your users.</p>     
                 </div>
                 <div class="ui-g">
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/ecuador-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/ecuador" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/harmony-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/harmony" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/california-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/california" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/apollo-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/apollo" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/serenity-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/serenity" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/avalon-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/avalon" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>                
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/manhattan-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/manhattan" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/paradise-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/paradise" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/ultima-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/ultima" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/barcelona-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/barcelona" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/morpheus-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/morpheus" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/verona-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/verona" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/atlantis-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/atlantis" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/poseidon-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/poseidon" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/omega-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/omega" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
-                    <div class="ui-g-12 ui-sm-12 ui-md-12 ui-lg-12 ui-xl-4 theme-box">
+                    <div class="ui-g-12 ui-lg-6 ui-xl-4 theme-box">
                         <p:graphicImage name="images/icarus-store-400.png" library="showcase" />
                         <a href="https://www.primefaces.org/layouts/icarus" target="_blank"><p:commandButton type="button" value="SEE DETAILS"/></a>
                     </div>
@@ -206,15 +208,13 @@
             </div>
 
             <div class="designer">
-                <span class="section-header-designer">PrimeFaces Designer API</span>
-                <div class="ui-g">
-                    <div class="ui-g-12">
-                        <p:graphicImage name="images/primefaces-designer-landing.jpg" library="showcase" />
-                        <p class="designer-info"><a href="https://www.primefaces.org/designer/primefaces" target="_blank" class="highlight">Designer API</a> is a SASS based theme engine to create PrimeFaces themes easily featuring over 500 variables, a demo application and a base sample theme. Whether you have your own style guide or just need a custom theme, Designer API is the right tool to design and bring them to existence.
-                            <br/>
-                            Visit <a href="https://www.primefaces.org/designer/primefaces" target="_blank" class="highlight">Designer API HomePage</a> for more information, live demos and access to a trial version.</p>
-                    </div>
+                <div class="designer-intro">
+                    <h2>PrimeFaces Designer API</h2>
+                    <p><a href="https://www.primefaces.org/designer/primefaces" target="_blank" class="highlight">Designer API</a> is a SASS based theme engine to create PrimeFaces themes easily featuring over 500 variables, a demo application and a base sample theme. Whether you have your own style guide or just need a custom theme, Designer API is the right tool to design and bring them to existence.
+                        Visit <a href="https://www.primefaces.org/designer/primefaces" target="_blank" class="highlight">Designer API HomePage</a> for more information, live demos and access to a trial version.</p>
                 </div>
+
+                <p:graphicImage name="images/primefaces-designer-landing.jpg" library="showcase" />
             </div>
 
             <div class="ui-g support">

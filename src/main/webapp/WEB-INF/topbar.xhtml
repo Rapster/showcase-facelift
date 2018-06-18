@@ -5,40 +5,39 @@
         <a id="menu-button">
             <i class="fa fa-bars"></i>
         </a>
-        <a class="logo-container">
+        <h:link class="logo-container" outcome="/index.xhtml">
             <p:graphicImage name="images/primefaces-logo.png" library="showcase" />
-        </a>
+        </h:link>
     
-        <ul>
+        <ul class="layout-topbar-menu">
             <li>
-                <a href="#">GET STARTED</a>
+                <h:link outcome="/getstarted">GET STARTED</h:link>
             </li>
             <li>
                 <a href="#">THEMES</a>
+                <div class="themes-overlay">
+                    <div class="themes-overlay-header">PREMIUM</div>
+                    <a href="https://www.primefaces.org/layouts/serenity"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-serenity.png" alt="Serenity"/><span>Serenity</span></a>
+                    <a href="https://www.primefaces.org/layouts/avalon"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-avalon.png" alt="Avalon (Bootstrap)"/><span>Avalon</span></a>
+                    <a href="https://www.primefaces.org/layouts/ultima"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-ultima.png" alt="Ultima (Material)"/><span>Ultima</span></a>
+                    <a href="https://www.primefaces.org/layouts/paradise"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-paradise.png" alt="Paradise"/><span>Paradise</span></a>
+                    <a href="https://www.primefaces.org/layouts/barcelona"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-barcelona.png" alt="Barcelona (Material)"/><span>Barcelona</span></a>
+                    <a href="https://www.primefaces.org/layouts/manhattan"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-manhattan.png" alt="Manhattan"/><span>Manhattan</span></a>
+                    <a href="https://www.primefaces.org/layouts/morpheus"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-morpheus.png" alt="Morpheus"/><span>Morpheus</span></a>
+                    <a href="https://www.primefaces.org/layouts/atlantis"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-atlantis.png" alt="Atlantis"/><span>Atlantis</span></a>
+                    <a href="https://www.primefaces.org/layouts/verona"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-verona.png" alt="Verona"/><span>Verona</span></a>
+                    <a href="https://www.primefaces.org/layouts/icarus"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-icarus.png" alt="Icarus"/><span>Icarus</span></a>
+                    <a href="https://www.primefaces.org/layouts/poseidon"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-poseidon.png" alt="Poseidon"/><span>Poseidon</span></a>
+                    <a href="https://www.primefaces.org/layouts/omega"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-omega.png" alt="Omega"/><span>Omega</span></a>
 
-                <div id="GlobalThemeSwitcher" class="navOverlay">
-                    <div class="topbar-submenu-header" style="margin-top:16px">PREMIUM</div>
-                    <a href="https://www.primefaces.org/layouts/serenity"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-serenity.png" alt="Serenity" styleClass="ui-layout-img"/><span class="ui-text">Serenity</span></a>
-                    <a href="https://www.primefaces.org/layouts/avalon"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-avalon.png" alt="Avalon (Bootstrap)" styleClass="ui-layout-img"/><span class="ui-text">Avalon</span></a>
-                    <a href="https://www.primefaces.org/layouts/ultima"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-ultima.png" alt="Ultima (Material)" styleClass="ui-layout-img"/><span class="ui-text">Ultima</span></a>
-                    <a href="https://www.primefaces.org/layouts/paradise"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-paradise.png" alt="Paradise" styleClass="ui-layout-img"/><span class="ui-text">Paradise</span></a>
-                    <a href="https://www.primefaces.org/layouts/barcelona"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-barcelona.png" alt="Barcelona (Material)" styleClass="ui-layout-img"/><span class="ui-text">Barcelona</span></a>
-                    <a href="https://www.primefaces.org/layouts/manhattan"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-manhattan.png" alt="Manhattan" styleClass="ui-layout-img"/><span class="ui-text">Manhattan</span></a>
-                    <a href="https://www.primefaces.org/layouts/morpheus"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-morpheus.png" alt="Morpheus" styleClass="ui-layout-img"/><span class="ui-text">Morpheus</span></a>
-                    <a href="https://www.primefaces.org/layouts/atlantis"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-atlantis.png" alt="Atlantis" styleClass="ui-layout-img"/><span class="ui-text">Atlantis</span></a>
-                    <a href="https://www.primefaces.org/layouts/verona"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-verona.png" alt="Verona" styleClass="ui-layout-img"/><span class="ui-text">Verona</span></a>
-                    <a href="https://www.primefaces.org/layouts/icarus"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-icarus.png" alt="Icarus" styleClass="ui-layout-img"/><span class="ui-text">Icarus</span></a>
-                    <a href="https://www.primefaces.org/layouts/poseidon"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-poseidon.png" alt="Poseidon" styleClass="ui-layout-img"/><span class="ui-text">Poseidon</span></a>
-                    <a href="https://www.primefaces.org/layouts/omega"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-omega.png" alt="Omega" styleClass="ui-layout-img"/><span class="ui-text">Omega</span></a>
-
-                    <div class="topbar-submenu-header">FREE</div>
+                    <div class="themes-overlay-header">FREE</div>
                     <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
-                        <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span class="ui-text">#{theme.displayName}</span></a>
+                        <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span>#{theme.displayName}</span></a>
                     </ui:repeat>
                 </div>
             </li>
             <li>
-                <a href="#">SUPPORT</a>
+                <a href="https://www.primefaces.org/support">SUPPORT</a>
             </li>
         </ul>
     

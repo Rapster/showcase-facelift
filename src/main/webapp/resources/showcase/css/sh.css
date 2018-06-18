@@ -83,6 +83,8 @@
 }
 .syntaxhighlighter table td.code .container {
   position: relative !important;
+  background-color: #EFF3F6 !important;
+  padding: 14px 0 !important;
 }
 .syntaxhighlighter table td.code .container textarea {
   box-sizing: border-box !important;
@@ -96,6 +98,10 @@
   padding-left: 1em !important;
   overflow: hidden !important;
   white-space: pre !important;
+}
+.syntaxhighlighter table td.gutter {
+    background-color: #EFF3F6 !important;
+    padding: 14px 0 !important;
 }
 .syntaxhighlighter table td.gutter .line {
   text-align: right !important;

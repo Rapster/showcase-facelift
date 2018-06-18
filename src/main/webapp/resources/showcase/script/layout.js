@@ -8,7 +8,8 @@ $(document).ready(function() {
         init: function() {    
             this.wrapper = $(document.body).children('.layout-wrapper');
             this.topbar = this.wrapper.children('.layout-topbar');
-            this.menu = this.wrapper.children('.layout-menu');
+            this.sidebar = this.wrapper.children('.layout-sidebar');
+            this.menu = $('#layout-menu');
             this.menulinks = this.menu.find('a');
             this.menuButton = $('#menu-button');
             this.expandedMenuitems = this.expandedMenuitems||[];
@@ -24,11 +25,11 @@ $(document).ready(function() {
         _bindEvents: function() {
             var $this = this;
 
-            $this.menu.on('click', function() {
+            this.menu.on('click', function() {
                 $this.menuClick = true;
             });
 
-            $this.menuButton.off('click').on('click', function(e) {
+            this.menuButton.off('click').on('click', function(e) {
                 $this.menuClick = true;
     
                 if($this.isMobile()) {
@@ -38,7 +39,7 @@ $(document).ready(function() {
                 e.preventDefault();
             });    
     
-            $this.menulinks.on('click', function (e) {
+            this.menulinks.on('click', function (e) {
                 var link = $(this),
                 item = link.parent('li'),
                 submenu = item.children('div');
