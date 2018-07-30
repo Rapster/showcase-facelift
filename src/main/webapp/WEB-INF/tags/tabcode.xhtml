@@ -8,7 +8,7 @@
 
     <c:set var="uri" value="#{uri}" />
     <c:set var="flatten" value="#{empty flatten ? false : flatten}" />
-    <c:set var="content" value="#{flatten ? showcase:getFlatFilesContent(uri) : showcase:getFileContent(uri, false)}" scope="request" />
+    <c:set var="content" value="#{flatten ? showcase:getFlatFilesContent(uri) : showcase:getFileContent(uri, false)}" />
 
     <c:if test="#{flatten}">
         <c:forEach var="entry" items="${content}">
