@@ -1,22 +1,30 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
 
     <div class="layout-topbar">
-        <a id="menu-button">
+        <a id="menu-button" href="#">
             <i class="fa fa-bars"></i>
         </a>
         <h:link class="logo-container" outcome="/index.xhtml">
             <p:graphicImage name="images/primefaces-logo.png" library="showcase" />
         </h:link>
-    
+
         <ul class="layout-topbar-menu">
+
             <li>
                 <h:link outcome="/getstarted">GET STARTED</h:link>
             </li>
             <li>
                 <a href="#">THEMES</a>
                 <div class="themes-overlay">
+                    <div class="themes-overlay-header">DESIGNER</div>
+                    <a href="https://www.primefaces.org/designer/primefaces">
+                        <i class="fa fa-paint-brush"></i><span>Theme Designer</span></a>
                     <div class="themes-overlay-header">PREMIUM</div>
+                    <a href="https://www.primefaces.org/layouts/ecuador"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-ecuador.png" alt="Ecuador"/><span>Ecuador</span></a>
+                    <a href="https://www.primefaces.org/layouts/harmony"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-harmony.png" alt="Harmony"/><span>Harmony</span></a>
+                    <a href="https://www.primefaces.org/layouts/california"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-california.png" alt="California"/><span>California</span></a>
+                    <a href="https://www.primefaces.org/layouts/apollo"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-apollo.png" alt="Apollo"/><span>Apollo</span></a>
                     <a href="https://www.primefaces.org/layouts/serenity"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-serenity.png" alt="Serenity"/><span>Serenity</span></a>
                     <a href="https://www.primefaces.org/layouts/avalon"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-avalon.png" alt="Avalon (Bootstrap)"/><span>Avalon</span></a>
                     <a href="https://www.primefaces.org/layouts/ultima"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-ultima.png" alt="Ultima (Material)"/><span>Ultima</span></a>
@@ -31,15 +39,18 @@
                     <a href="https://www.primefaces.org/layouts/omega"><h:graphicImage name="showcase/images/themeswitcher/themeswitcher-omega.png" alt="Omega"/><span>Omega</span></a>
 
                     <div class="themes-overlay-header">FREE</div>
-                    <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
-                        <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span>#{theme.displayName}</span></a>
-                    </ui:repeat>
+                    <h:form>
+                        <ui:repeat value="#{themeSwitcherView.themes}" var="theme">
+                            <a href="#" data-theme="#{theme.name}"><span class="ui-theme ui-theme-#{theme}"></span><span>#{theme.displayName}</span></a>
+                        </ui:repeat>
+                        <p:remoteCommand name="changeTheme" actionListener="#{guestPreferences.changeTheme}" />
+                    </h:form>
                 </div>
+
             </li>
             <li>
                 <a href="https://www.primefaces.org/support">SUPPORT</a>
             </li>
         </ul>
-    
     </div>
 </ui:composition>

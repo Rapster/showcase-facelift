@@ -11,9 +11,11 @@ $(document).ready(function() {
             this.sidebar = this.wrapper.children('.layout-sidebar');
             this.menu = $('#layout-menu');
             this.menulinks = this.menu.find('a');
+            this.submenuItems = this.menu.find('> li');
             this.menuButton = $('#menu-button');
             this.expandedMenuitems = this.expandedMenuitems||[];
-            this.nano = this.menu.children('.nano');
+            this.nano = this.sidebar.children('.nano');
+            this.searchInput = this.sidebar.find('.search-input > input');
 
             this.restoreMenuState();
             
@@ -25,17 +27,17 @@ $(document).ready(function() {
         _bindEvents: function() {
             var $this = this;
 
-            this.menu.on('click', function() {
+            this.sidebar.on('click', function() {
                 $this.menuClick = true;
             });
 
             this.menuButton.off('click').on('click', function(e) {
                 $this.menuClick = true;
-    
                 if($this.isMobile()) {
-                    $this.wrapper.toggleClass('layout-menu-mobile-active');
+                    $this.wrapper.toggleClass('layout-sidebar-mobile-active');   
+                    $(document.body).toggleClass('hidden-overflow-body');   
                 }
-    
+                
                 e.preventDefault();
             });    
     
@@ -68,12 +70,66 @@ $(document).ready(function() {
             });
 
             $(document.body).on('click', function() {
-
                 if(!$this.menuClick && $this.isMobile()) {
-                    $this.wrapper.removeClass('layout-menu-mobile-active');
+                    $this.wrapper.removeClass('layout-sidebar-mobile-active');
+                    $(document.body).removeClass('hidden-overflow-body');  
                 }
     
                 $this.menuClick = false;
+            });
+            
+            this.searchInput.on('keyup', function(e) {
+                var input = $(this), 
+                searchedValue = input.val().toLowerCase(),
+                matchSub = false;
+
+                for(var i = 0; i < $this.submenuItems.length; i++) {
+                    var submenuItem = $this.submenuItems.eq(i),
+                    submenuLink = submenuItem.children('a'),
+                    submenuLinkVal = $.trim(submenuLink.children('span').text()).toLowerCase();
+                    
+                    if(submenuLinkVal.search(searchedValue) < 0 || searchedValue.length === 0) {  
+                        var menulinksInSubmenu = submenuLink.next().find('a');
+                        
+                        for(var j = 0; j < menulinksInSubmenu.length; j++) {
+                            var menulink = menulinksInSubmenu.eq(j),
+                            menuitem = menulink.parent(),
+                            itemVal = $.trim(menulink.children('span').text()).toLowerCase();
+                            
+                            if(itemVal.search(searchedValue) >= 0) {
+                                menuitem.show();
+                                matchSub = true;
+                            }
+                            else{
+                                menuitem.hide();
+                            }
+                        }
+                        
+                        if(matchSub) {
+                            submenuItem.show();
+                            matchSub = false;
+                        }
+                        else {
+                            submenuItem.hide();
+                        }
+                    }
+                    else {
+                        submenuItem.show();
+                    }
+                }   
+            });
+            
+            this.topbar.find('> .layout-topbar-menu .themes-overlay a').on("click", function(e) {
+                var href = $(this).attr('href');
+                if(href && href !== '#') {
+                    window.location.href = href;
+                }
+                else {
+                    var theme = $(this).data("theme");
+                    changeTheme([{name:'globaltheme', value:theme}]);
+                    PrimeFaces.changeTheme(theme);
+                    e.preventDefault();
+                }
             });
         },
 

@@ -19,6 +19,16 @@
     filter: alpha(opacity=$opacity-ie);
 }
 
+@mixin gradient($deg, $color1, $color2) {
+    background-image: -moz-linear-gradient($deg, $color1 0%, $color2 100%); /* ff3.6+ */
+    background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0%, $color1), color-stop(100%, $color2)); /* safari4+,chrome */
+    background-image: -webkit-linear-gradient($deg, $color1 0%, $color2 100%); /* safari5.1+,chrome10+ */
+    background-image: -o-linear-gradient($deg, $color1 0%, $color2 100%); /* opera 11.10+ */
+    background-image: -ms-linear-gradient($deg, $color1 0%, $color2 100%); /* ie10+ */
+    background-image: linear-gradient($deg, $color1 0%, $color2 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( endColorstr='#{$color1}', startColorstr='#{$color2}',GradientType=1 ); /* ie6-9 */
+}
+
 @mixin background-gradient-left2right($start-color, $end-color) {
     background-color: $start-color;
     background-image: -webkit-gradient(linear, left top, right top, from($start-color), to($end-color));
