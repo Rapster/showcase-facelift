@@ -36,31 +36,6 @@
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="tooltipGlobal.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:tooltip /&gt;
-        
-&lt;h:form&gt;
-    &lt;h:panelGrid columns="2" cellpadding="10"&gt;
-        &lt;h:outputText value="Input: " /&gt;
-        &lt;p:inputText pt:data-tooltip="Tooltip for an input" /&gt;
-
-        &lt;h:outputText value="Link: " /&gt;
-        &lt;h:outputLink value="\#" pt:data-tooltip="Tooltip for a link"&gt;
-            &lt;h:outputText value="About" /&gt;
-        &lt;/h:outputLink&gt;
-
-        &lt;h:outputText value="Button: " /&gt;
-        &lt;p:commandButton value="Update" pt:data-tooltip="Update components" update="@parent" /&gt;
-    &lt;/h:panelGrid&gt; 
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>

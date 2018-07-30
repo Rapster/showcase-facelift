@@ -40,39 +40,6 @@
         </h:form>
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="status.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;"&gt;
-    &lt;f:facet name="default"&gt;
-        &lt;h:outputText value="Status: StandBy" /&gt;
-    &lt;/f:facet&gt;
-
-    &lt;f:facet name="start"&gt;
-        &lt;p:graphicImage name="/demo/images/ajaxloadingbar.gif" /&gt;
-    &lt;/f:facet&gt;
-
-    &lt;f:facet name="complete"&gt;
-        &lt;h:outputText value="Status: Completed" /&gt;
-    &lt;/f:facet&gt;
-&lt;/p:ajaxStatus&gt;
-
-&lt;p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /&gt;
-
-&lt;p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false"&gt;
-    &lt;p:graphicImage name="/demo/images/ajaxloadingbar.gif" /&gt;
-&lt;/p:dialog&gt;
-
-&lt;h:form&gt;
-    &lt;p:commandButton value="Send" icon="ui-icon-refresh" /&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-        </p:tabView>
-
-    </ui:define>
     
-    <ui:define name="status"></ui:define>
 
 </ui:composition>

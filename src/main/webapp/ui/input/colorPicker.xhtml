@@ -41,69 +41,6 @@
  
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="colorPicker.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;          
-    &lt;h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px"&gt;
-        &lt;h:outputText value="Inline: " /&gt;
-        &lt;p:colorPicker value="\#{colorView.colorInline}" mode="inline" /&gt;
-
-        &lt;h:outputText value="Popup: " /&gt;
-        &lt;p:colorPicker value="\#{colorView.colorPopup}" /&gt;                   
-    &lt;/h:panelGrid&gt;
-
-    &lt;p:separator /&gt;
-
-    &lt;p:commandButton value="Submit" oncomplete="PF('dlg').show();" update="grid" style="margin-left: 20px" /&gt;
-
-    &lt;p:dialog modal="true" widgetVar="dlg" showEffect="fade" hideEffect="fade" header="Selected Colors" resizable="false"&gt;
-        &lt;h:panelGrid id="grid" columns="2" cellpadding="5"&gt;
-            &lt;h:outputText value="Inline color: " /&gt;
-            &lt;h:outputText value="\#{colorView.colorInline}" style="background-color: #\#{colorView.colorInline}" /&gt;
-
-            &lt;h:outputText value="Popup color: " /&gt;
-            &lt;h:outputText value="\#{colorView.colorPopup}" style="background-color: #\#{colorView.colorPopup}" /&gt;
-        &lt;/h:panelGrid&gt;
-    &lt;/p:dialog&gt; 
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ColorView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.input;
-
-import javax.faces.bean.ManagedBean;
-
-@ManagedBean
-public class ColorView {
     
-    private String colorInline;
-    private String colorPopup;
-
-    public String getColorInline() {
-        return colorInline;
-    }
-
-    public void setColorInline(String colorInline) {
-        this.colorInline = colorInline;
-    }
-
-    public String getColorPopup() {
-        return colorPopup;
-    }
-
-    public void setColorPopup(String colorPopup) {
-        this.colorPopup = colorPopup;
-    } 
-}
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

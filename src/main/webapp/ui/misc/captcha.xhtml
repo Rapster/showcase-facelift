@@ -24,39 +24,6 @@
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="captcha.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;p:messages showDetail="true"/&gt;
-    &lt;p:captcha label="Captcha" /&gt;
-    &lt;p:commandButton value="Check" actionListener="\#{captchaView.submit}" ajax="false" icon="ui-icon-check"/&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="CaptchaView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.misc;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-
-@ManagedBean
-public class CaptchaView {
     
-    public void submit() {
-		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "Correct");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
-}
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

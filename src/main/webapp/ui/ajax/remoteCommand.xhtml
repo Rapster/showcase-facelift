@@ -24,38 +24,6 @@
     
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="remoteCommand.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;p:remoteCommand name="rc" update="msgs" actionListener="\#{remoteCommandView.execute}" /&gt;
-
-    &lt;p:growl id="msgs" showDetail="true" /&gt;
-    &lt;p:commandButton type="button" onclick="rc()" value="Execute" icon="ui-icon-refresh" /&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="RemoteCommandView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.ajax;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-
-@ManagedBean
-public class RemoteCommandView {
-
-    public void execute() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Executed", "Using RemoteCommand."));
-    }
-}
-                </pre>
-            </p:tab>
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>

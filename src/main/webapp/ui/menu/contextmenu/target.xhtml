@@ -28,27 +28,6 @@
         </p:contextMenu>
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="target.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:imageSwitch id="images" effect="fade" widgetVar="gallery" slideshowAuto="false"&gt;
-    &lt;p:graphicImage name="/demo/images/nature/nature1.jpg" /&gt;
-    &lt;p:graphicImage name="/demo/images/nature/nature2.jpg" /&gt;
-    &lt;p:graphicImage name="/demo/images/nature/nature3.jpg" /&gt;
-    &lt;p:graphicImage name="/demo/images/nature/nature4.jpg" /&gt;
-&lt;/p:imageSwitch&gt;
-
-&lt;p:contextMenu for="images"&gt;
-    &lt;p:menuitem value="Prev" url="javascript:void(0)" onclick="PF('gallery').previous()" icon="ui-icon-triangle-1-w" /&gt;
-    &lt;p:menuitem value="Next" url="javascript:void(0)" onclick="PF('gallery').next()" icon="ui-icon-triangle-1-e" /&gt;
-    &lt;p:menuitem value="Remove" url="javascript:void(0)" onclick="PF('gallery').getJQ().fadeOut()" icon="ui-icon-close"/&gt;
-&lt;/p:contextMenu&gt;
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>

@@ -42,31 +42,6 @@
         </h:form>
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="log.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:log id="log" /&gt;
-
-&lt;h3 style="margin-top:0"&gt;Client Side API&lt;/h3&gt;
-&lt;p:commandButton type="button" id="info" value="Info" onclick="PrimeFaces.info('This is an info message.')" /&gt;
-&lt;p:commandButton type="button" id="warn" value="Warn" onclick="PrimeFaces.warn('This is a warn message.')" /&gt;
-&lt;p:commandButton type="button" id="debug" value="Debug" onclick="PrimeFaces.debug('This is a debug message.')" /&gt;
-&lt;p:commandButton type="button" id="error" value="Error" onclick="PrimeFaces.error('This is an error message.')" /&gt;
-
-&lt;h3&gt;Ajax Request&lt;/h3&gt;
-&lt;h:form id="form"&gt;
-    &lt;h:panelGrid id="grid" columns="4" cellpadding="5"&gt;
-        &lt;p:outputLabel for="name" value="Name:" style="font-weight:bold"/&gt;
-        &lt;p:inputText id="name" /&gt;
-        &lt;p:commandButton value="Submit" update="grid"/&gt;
-    &lt;/h:panelGrid&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>

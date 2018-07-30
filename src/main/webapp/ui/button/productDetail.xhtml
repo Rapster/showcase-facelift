@@ -23,47 +23,6 @@
     
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="productDetail.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;f:metadata&gt;
-    &lt;f:viewParam name="productId" value="\#{productDetailView.productId}" /&gt;
-&lt;/f:metadata&gt;
-
-...
-
-
-&lt;p&gt;You've been redirected to this bookmarkable page with button.
-    ViewParameter you've passed is &lt;strong&gt;"
-    \#{productDetailView.productId}"&lt;/strong&gt;
-&lt;/p&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ProductDetailView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.button;
-
-import javax.faces.bean.ManagedBean;
-
-@ManagedBean
-public class ProductDetailView {
     
-    private String productId; 
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-}
-                </pre>
-            </p:tab>
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

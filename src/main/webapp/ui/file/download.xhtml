@@ -41,62 +41,6 @@ function stop() {
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="download.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false"&gt;
-    &lt;p:graphicImage name="/demo/images/ajaxloadingbar.gif" /&gt;
-&lt;/p:dialog&gt;
-
-&lt;h:form&gt;
-    &lt;p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s"&gt;
-        &lt;p:fileDownload value="\#{fileDownloadView.file}" /&gt;
-    &lt;/p:commandButton&gt;
-&lt;/h:form&gt;
-
-&lt;script type="text/javascript"&gt;
-function start() {
-    PF('statusDialog').show();
-}
-
-function stop() {
-    PF('statusDialog').hide();
-}
-&lt;/script&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="FileDownloadView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.file;
-
-import java.io.InputStream;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
-
-@ManagedBean
-public class FileDownloadView {
     
-    private StreamedContent file;
-	
-	public FileDownloadView() {        
-        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/demo/images/boromir.jpg");
-		file = new DefaultStreamedContent(stream, "image/jpg", "downloaded_boromir.jpg");
-	}
-
-    public StreamedContent getFile() {
-        return file;
-    }
-}
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

@@ -62,51 +62,6 @@
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="lightBox.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h3 style="margin-top: 0"&gt;Images&lt;/h3&gt;
-&lt;p:lightBox styleClass="imagebox" id="lighbox1"&gt;  
-    &lt;h:outputLink value="../../resources/demo/images/nature/nature1.jpg" title="Nature 1"&gt;  
-        &lt;h:graphicImage name="/demo/images/nature/nature1.jpg" id="nature1" style="height: 77px; width: 100px" /&gt;  
-    &lt;/h:outputLink&gt;
-
-    &lt;h:outputLink value="../../resources/demo/images/nature/nature2.jpg" title="Nature 2"&gt;  
-        &lt;h:graphicImage name="/demo/images/nature/nature2.jpg" id="nature2" style="height: 77px; width: 100px" /&gt;  
-    &lt;/h:outputLink&gt;
-
-    &lt;h:outputLink value="../../resources/demo/images/nature/nature3.jpg" title="Nature 3"&gt;  
-        &lt;h:graphicImage name="/demo/images/nature/nature3.jpg" id="nature3" style="height: 77px; width: 100px" /&gt;  
-    &lt;/h:outputLink&gt;
-
-    &lt;h:outputLink value="../../resources/demo/images/nature/nature4.jpg" title="Nature 4"&gt;  
-        &lt;h:graphicImage name="/demo/images/nature/nature4.jpg" id="nature4" style="height: 77px; width: 100px" /&gt;  
-    &lt;/h:outputLink&gt;
-&lt;/p:lightBox&gt;
-
-&lt;h3&gt;Inline&lt;/h3&gt;
-&lt;p:lightBox id="lighbox2"&gt;
-    &lt;h:outputLink value="\#"&gt;
-        &lt;h:outputText value="Video Content" /&gt;
-    &lt;/h:outputLink&gt;
-
-    &lt;f:facet name="inline"&gt;
-        &lt;p:media value="http://vimeo.com/moogaloop.swf?clip_id=87780794"  width="400" height="225" player="flash" /&gt;
-    &lt;/f:facet&gt;
-&lt;/p:lightBox&gt;
-
-&lt;h3&gt;IFrame&lt;/h3&gt;
-&lt;p:lightBox iframe="true" id="lighbox3"&gt;
-    &lt;h:outputLink value="http://www.primefaces.org" title="PrimeFaces HomePage"&gt;
-        &lt;h:outputText value="PrimeFaces HomePage" /&gt;
-    &lt;/h:outputLink&gt;
-&lt;/p:lightBox&gt;
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>
