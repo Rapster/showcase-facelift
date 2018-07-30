@@ -38,51 +38,6 @@
 
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="fragment.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
-        &lt;p:outputLabel for="ignored" value="Required" /&gt;
-        &lt;p:inputText id="ignored" required="true" /&gt;
-    &lt;/h:panelGrid&gt;
-
-    &lt;p:fragment&gt;
-        &lt;p:autoUpdate /&gt;
-        &lt;h:panelGrid columns="4" cellpadding="5"&gt;
-            &lt;p:outputLabel for="txt" value="Text Value:" /&gt;
-            &lt;p:inputText id="txt" value="\#{basicView.text}" /&gt;
-            &lt;p:commandButton value="Submit"/&gt;
-            &lt;h:outputText value="\#{basicView.text}" /&gt;
-        &lt;/h:panelGrid&gt;
-    &lt;/p:fragment&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="BasicView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.ajax;
-
-import javax.faces.bean.ManagedBean;
-
-@ManagedBean
-public class BasicView {
-
-    private String text;
-
-    public String getText() {
-        return text;
-    }
-    public void setText(String text) {
-        this.text = text;
-    }
-}
-                </pre>
-            </p:tab>
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>

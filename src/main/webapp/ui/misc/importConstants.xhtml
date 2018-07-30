@@ -26,37 +26,6 @@
         <h:outputText value="#{PFConstants.DOWNLOAD_COOKIE}" />
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="importConstants.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:importConstants type="org.primefaces.util.Constants" var="PFConstants" /&gt;
-
-LIBRARY:  
-&lt;h:outputText value="\#{PFConstants.LIBRARY}" /&gt;
-
-&lt;br /&gt;
-
-DOWNLOAD_COOKIE:
-&lt;h:outputText value="\#{PFConstants.DOWNLOAD_COOKIE}" /&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="Constants.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.util;
-
-public class Constants {
     
-    public static final String DOWNLOAD_COOKIE = "primefaces.download";
-
-    public final static String LIBRARY = "primefaces";
-    
-    public final static String PUSH_PATH = "/primepush";
-}
-                </pre>
-            </p:tab>
-        </p:tabView>
-    </ui:define>
 
 </ui:composition>

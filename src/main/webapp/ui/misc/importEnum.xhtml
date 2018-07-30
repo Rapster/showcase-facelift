@@ -30,37 +30,6 @@
         </ui:repeat>
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="importConstants.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:importEnum type="javax.faces.application.ProjectStage" var="JsfProjectStages" allSuffix="ALL_ENUM_VALUES" /&gt;  
-
-Development: \#{JsfProjectStages.Development}  
-
-&lt;br/&gt;
-
-ALL:   
-&lt;ui:repeat var="current" value="\#{JsfProjectStages.ALL_ENUM_VALUES}"&gt;  
-    &lt;h:outputText value="\#{current}" /&gt; &#160;  
-&lt;/ui:repeat>&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ProjectStage.java">
-                <pre name="code" class="brush:java">
-package javax.faces.application;
-
-public enum ProjectStage
-{
-    Development,
-    Production,
-    SystemTest,
-    UnitTest;
-}
-                </pre>
-            </p:tab>
-        </p:tabView>
-    </ui:define>
+    
 
 </ui:composition>

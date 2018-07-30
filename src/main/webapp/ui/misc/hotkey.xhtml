@@ -41,65 +41,6 @@
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="hotkey.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h3 style="margin-top:0"&gt;ImageSwitch Integration (Left-Right)&lt;/h3&gt;
-&lt;p:imageSwitch effect="fade" widgetVar="switcher" slideshowAuto="false"&gt;
-    &lt;p:graphicImage name="demo/images/nature/nature1.jpg" /&gt;
-    &lt;p:graphicImage name="demo/images/nature/nature2.jpg" /&gt;
-    &lt;p:graphicImage name="demo/images/nature/nature3.jpg" /&gt;
-    &lt;p:graphicImage name="demo/images/nature/nature4.jpg" /&gt;
-&lt;/p:imageSwitch&gt;
-
-&lt;p:hotkey bind="left" handler="PF('switcher').previous();" /&gt;
-&lt;p:hotkey bind="right" handler="PF('switcher').next();" /&gt;
-
-&lt;h3&gt;Ajax Hotkey (ctrl + shift + s)&lt;/h3&gt;
-&lt;h:form&gt;
-    &lt;p:growl id="msgs" showDetail="true" /&gt;
-
-    &lt;p:hotkey bind="ctrl+shift+s" update="msgs" actionListener="\#{hotkeyView.save}"/&gt;
-
-    &lt;h:panelGrid columns="2" cellpadding="5"&gt;
-        &lt;p:outputLabel for="text" value="Text" /&gt;
-        &lt;p:inputText id="text" value="\#{hotkeyView.text}" /&gt;
-    &lt;/h:panelGrid&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="HotkeyView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.misc;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-
-@ManagedBean
-public class HotkeyView {
     
-    private String text;
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-    
-    public void save() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Submitted with Hotkey"));
-	}
-}
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

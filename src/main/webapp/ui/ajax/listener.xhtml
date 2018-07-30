@@ -27,48 +27,6 @@
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="listener.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;h:panelGrid columns="3"&gt;
-        &lt;h:outputText value="Keyup: " /&gt;
-        &lt;p:inputText id="counter" value="\#{listenerView.text}"&gt;
-            &lt;p:ajax event="keyup" update="out" listener="\#{listenerView.handleKeyEvent}" /&gt;
-        &lt;/p:inputText&gt;
-        &lt;h:outputText id="out" value="\#{listenerView.text}" /&gt;
-    &lt;/h:panelGrid&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ListenerView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.ajax;
-
-import javax.faces.bean.ManagedBean;
-
-@ManagedBean
-public class ListenerView {
     
-    private String text;
-
-    public String getText() {
-        return text;
-    }
-    public void setText(String text) {
-        this.text = text;
-    }
-    
-    public void handleKeyEvent() {
-        text = text.toUpperCase();
-    }
-}
-                </pre>
-            </p:tab>
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

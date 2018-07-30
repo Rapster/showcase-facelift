@@ -20,49 +20,6 @@
         </h:form>
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="live.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;p:poll interval="3" update="votes" /&gt;
-    &lt;p:chart id="votes" type="pie" model="\#{chartView.livePieModel}" style="width:400px;height:300px"/&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ChartView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.examples;
-
-import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import org.primefaces.model.chart.PieChartModel;
-
-@ManagedBean
-public class ChartView implements Serializable {
-
-    private PieChartModel livePieModel;
-
-    public PieChartModel getLivePieModel() {
-        int random1 = (int)(Math.random() * 1000);
-		int random2 = (int)(Math.random() * 1000);
-
-		livePieModel.getData().put("Candidate 1", random1);
-        livePieModel.getData().put("Candidate 2", random2);
-        
-        livePieModel.setTitle("Votes");
-        livePieModel.setLegendPosition("ne");
-        
-        return livePieModel;
-    }
     
-}
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

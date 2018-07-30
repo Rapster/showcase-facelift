@@ -33,62 +33,6 @@
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="event.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;h:panelGrid columns="3" cellpadding="5"&gt;
-        &lt;h:outputText value="KeyUp: " /&gt;
-        &lt;p:inputText id="firstname" value="\#{userView.firstname}"&gt;
-            &lt;p:ajax event="keyup" update="out1" /&gt;
-        &lt;/p:inputText&gt;
-        &lt;h:outputText id="out1" value="\#{userView.firstname}" /&gt;
-
-        &lt;h:outputText value="Blur: " /&gt;
-        &lt;p:inputText id="surname" value="\#{userView.lastname}"&gt;
-            &lt;p:ajax event="blur" update="out2" /&gt;
-        &lt;/p:inputText&gt;
-        &lt;h:outputText id="out2" value="\#{userView.lastname}" /&gt;
-    &lt;/h:panelGrid&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="UserView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.ajax;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-
-@ManagedBean
-public class UserView {
     
-    private String firstname;
-	private String lastname;
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-}
-                </pre>
-            </p:tab>
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

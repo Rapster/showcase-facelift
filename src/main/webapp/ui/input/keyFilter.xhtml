@@ -78,32 +78,6 @@
 
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="keyFilter.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;h:panelGrid columns="2"&gt;   
-        &lt;h:outputText value="KeyFilter with regEx on a p:inputText"/&gt;   
-        &lt;p:inputText id="text1"&gt;
-            &lt;p:keyFilter regEx="/[ABC]/i"/&gt;
-        &lt;/p:inputText&gt; 
-
-        &lt;h:outputText value="KeyFilter with mask on a h:inputText"/&gt;   
-        &lt;h:inputText id="text2" /&gt;   
-
-        &lt;h:outputText value="KeyFilter with testFunction on a p:autoComplete" /&gt;  
-        &lt;p:autoComplete id="autoComplete1" value="\#{autoCompleteView.txt1}" completeMethod="\#{autoCompleteView.completeText}" /&gt;   
-    &lt;/h:panelGrid&gt; 
-
-    &lt;p:keyFilter for="text2" mask="num" /&gt; 
-    &lt;p:keyFilter for="autoComplete1" testFunction="return c == 'z';" /&gt; 
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>

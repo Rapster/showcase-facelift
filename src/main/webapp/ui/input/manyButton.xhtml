@@ -36,55 +36,6 @@
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="manyButton.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"&gt;
-        &lt;h:outputText value="Font:" /&gt;
-        &lt;p:selectManyButton value="\#{selectManyView.selectedOptions}"&gt;
-            &lt;f:selectItem itemLabel="b" itemValue="b" /&gt;
-            &lt;f:selectItem itemLabel="u" itemValue="u" /&gt;
-            &lt;f:selectItem itemLabel="i" itemValue="i" /&gt;
-        &lt;/p:selectManyButton&gt;
-
-        &lt;p:commandButton value="Submit" update="display" icon="ui-icon-check" /&gt;
-        &lt;p:spacer /&gt;
-
-        &lt;h:outputText value="Selected:" /&gt;
-        &lt;p:dataList id="display" value="\#{selectManyView.selectedOptions}" var="font" emptyMessage="No fonts selected"&gt;
-            &lt;h:outputText value="\#{font}" style="font-weight: bold" /&gt;
-        &lt;/p:dataList&gt;
-    &lt;/h:panelGrid&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="SelectManyView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.input;
-
-import java.util.List;
-
-@ManagedBean
-public class SelectManyView {
     
-    private List&lt;String&gt; selectedOptions;
-    
-    public List&lt;String&gt; getSelectedOptions() {
-        return selectedOptions;
-    }
-
-    public void setSelectedOptions(List&lt;String&gt; selectedOptions) {
-        this.selectedOptions = selectedOptions;
-    }
-}
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>

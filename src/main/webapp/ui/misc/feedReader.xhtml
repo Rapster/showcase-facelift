@@ -21,20 +21,6 @@
         </p:feedReader>
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="feedReader.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:feedReader value="http://rss.news.yahoo.com/rss/sports" var="feed"&gt;
-    &lt;h:outputText value="\#{feed.title}" style="font-weight: bold;display:block"/&gt;
-    &lt;h:outputText value="\#{feed.description.value}" escape="false"/&gt;
-    &lt;p:separator /&gt;
-&lt;/p:feedReader&gt;
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>

@@ -39,28 +39,6 @@
         
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="outputPanel.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;p:outputPanel deferred="true"&gt;
-        &lt;h3&gt;Loaded after page load.&lt;/h3&gt;
-        &lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
-    &lt;/p:outputPanel&gt;
-
-    &lt;div style="height:600px"&gt;&lt;/div&gt;
-
-    &lt;p:outputPanel deferred="true" deferredMode="visible"&gt;
-        &lt;h3&gt;Loaded after the panel becomes visible on page scroll.&lt;/h3&gt;
-        &lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
-    &lt;/p:outputPanel&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
+    
 
 </ui:composition>

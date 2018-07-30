@@ -31,52 +31,6 @@
 
     </ui:define>
 
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="commandButton.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;h:form&gt;
-    &lt;p:growl id="growl" life="2000" /&gt;
     
-    &lt;p:commandButton value="Ajax Submit" id="ajax" update="growl" actionListener="\#{buttonView.buttonAction}" styleClass="ui-priority-primary" /&gt;
-
-    &lt;p:commandButton value="Non-Ajax Submit" id="nonAjax" actionListener="\#{buttonView.buttonAction}" ajax="false" /&gt;
-
-    &lt;p:commandButton value="With Icon" id="withIcon" actionListener="\#{buttonView.buttonAction}" update="growl" icon="ui-icon-disk" /&gt;
-
-    &lt;p:commandButton actionListener="\#{buttonView.buttonAction}" id="iconOnly" update="growl" icon="ui-icon-disk" title="Icon Only" /&gt;
-
-    &lt;p:commandButton value="Disabled" id="disabled" disabled="true" /&gt;
-&lt;/h:form&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ButtonView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.button;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-
-@ManagedBean
-public class ButtonView {
-    
-    public void buttonAction(ActionEvent actionEvent) {
-        addMessage("Welcome to Primefaces!!");
-    }
-	
-	public void addMessage(String summary) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
-}
-                </pre>
-            </p:tab>
-            
-        </p:tabView>
-
-    </ui:define>
 
 </ui:composition>
