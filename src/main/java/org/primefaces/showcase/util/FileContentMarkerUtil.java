@@ -23,7 +23,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.omnifaces.util.Faces;
 
@@ -38,12 +41,12 @@ public class FileContentMarkerUtil {
 
     private static FileContentSettings javaFileSettings = new FileContentSettings()
             .setType("java")
-            .setStartMarkers("@ManagedBean", "@RequestScoped", "@ViewScoped", "@SessionScoped", "@FacesConverter", " class ", " enum ")
+            .setStartMarkers("@ManagedBean", "@RequestScoped", "@ViewScoped", "@SessionScoped", "@FacesConverter", "@Target", " class ", " enum ")
             .setIncludeMarker(true);
 
     private static FileContentSettings xhtmlFileSettings = new FileContentSettings()
             .setType("xml")
-            .setStartMarkers("EXAMPLE-SOURCE-START", "<ui:define name=\"implementation\">")
+            .setStartMarkers("EXAMPLE-SOURCE-START", "<ui:define name=\"implementation\">", "<ui:define name=\"head\">")
             .setEndMarkers("EXAMPLE-SOURCE-END", "</ui:define>")
             .setIncludeMarker(false);
 
@@ -81,15 +84,17 @@ public class FileContentMarkerUtil {
                 }
 
                 // if is before first end marker
-                if (containMarker(line, settings.getEndMarkers())) {
-                    break; // other content file is ignored
+                if (started && containMarker(line, settings.getEndMarkers())) {
+                    started = false;
+                    continue;
                 }
 
                 if (readBeans && line.contains("#{")) {
-                    String[] targets = StringUtils.substringBetween(line, "#{", "}").split("\\.");
-                    if (targets.length > 1) {
-                        Object bean = Faces.evaluateExpressionGet("#{" + targets[0] + "}");
-                        if (bean != null) {
+                    Matcher m = Pattern.compile("#\\{\\w*?\\s?(\\w+)[\\.\\[].*\\}").matcher(line.trim());
+                    while(m.find()) {
+                        String group = m.group(1);
+                        Object bean = Faces.evaluateExpressionGet("#{" + group + "}");
+                        if (bean != null && !ClassUtils.isPrimitiveOrWrapper(bean.getClass())) {
                             String javaFileName = StringUtils.substringAfterLast(bean.getClass().getName(), ".") + ".java";
                             if (!javaFiles.contains(new FileContent(javaFileName, null, null, null))) {
                                 String path = "/" + StringUtils.replaceAll(bean.getClass().getName(), "\\.", "/") + ".java";
