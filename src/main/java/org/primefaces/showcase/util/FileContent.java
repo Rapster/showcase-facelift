@@ -2,6 +2,13 @@ package org.primefaces.showcase.util;
 
 import java.util.List;
 
+/**
+ * FileContentMarkerUtil
+ *
+ * @author Sébastien Lepage / last modified by $Author$
+ * @version $Revision$
+ * @since 6.3
+ */
 public class FileContent {
 
     private String title;
