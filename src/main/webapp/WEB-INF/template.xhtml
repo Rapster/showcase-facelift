@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:showcase="http://primefaces.org/ui/showcase"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:o="http://omnifaces.org/ui"
       lang="en">
 
     <h:head>
@@ -49,16 +50,18 @@
                     </div>
                     <div class="content-section content-source">
                         <p:outputPanel deferred="true">
-                            <ui:insert name="source">
-                                <p:tabView>
-    
-                                    <ui:insert name="source-tabs">
-                                        <showcase:tabcode uri="#{facesContext.externalContext.requestServletPath}" flatten="true" />
-                                    </ui:insert>
-    
-                                    <ui:insert name="more-source-tabs" />
-                                </p:tabView>
-                            </ui:insert>
+                            <o:cache key="#{facesContext.externalContext.requestServletPath}">
+                                <ui:insert name="source">
+                                    <p:tabView>
+
+                                        <ui:insert name="source-tabs">
+                                            <showcase:tabcode uri="#{facesContext.externalContext.requestServletPath}" flatten="true" />
+                                        </ui:insert>
+
+                                        <ui:insert name="more-source-tabs" />
+                                    </p:tabView>
+                                </ui:insert>
+                            </o:cache>
                         </p:outputPanel>
                     </div>
                 </ui:insert>
