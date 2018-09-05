@@ -3,7 +3,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:showcase="http://primefaces.org/ui/showcase"
+                xmlns:sc="http://primefaces.org/ui/showcase"
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="head">
@@ -342,8 +342,8 @@
             
     </ui:define>
     
-    <ui:define name="source-tabs">
-        <showcase:tabcode uri="/ui/misc/responsive.xhtml" />
+    <ui:define name="source">
+        <sc:tabscode value="#{sc:getFileContent('/ui/misc/responsive.xhtml', false)}" />
     </ui:define>
 
 </ui:composition>

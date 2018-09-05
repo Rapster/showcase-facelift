@@ -1,9 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:showcase="http://primefaces.org/ui/showcase"
                 template="./template.xhtml">
 
     <ui:define name="title">
@@ -35,7 +33,7 @@
     </ui:define>
 
     <ui:define name="more-source-tabs">
-        <showcase:tabcode uri="/org/primefaces/showcase/service/CarService.java" />
+        <p:tab title="/org/primefaces/showcase/service/CarService.java" />
     </ui:define>
 
 </ui:composition>

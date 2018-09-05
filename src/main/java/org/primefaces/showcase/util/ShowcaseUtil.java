@@ -1,13 +1,15 @@
 package org.primefaces.showcase.util;
 
+import org.apache.commons.lang3.BooleanUtils;
+import org.primefaces.component.tabview.Tab;
+
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIPanel;
+import javax.faces.context.FacesContext;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import javax.faces.context.FacesContext;
-
-import org.omnifaces.util.Faces;
 
 /**
  * ShowcaseUtil
@@ -18,7 +20,25 @@ import org.omnifaces.util.Faces;
  */
 public class ShowcaseUtil {
 
-    public static FileContent getFileContent(final String fullPathToFile, Boolean readBeans) {
+    public static final List<FileContent> getFilesContent(UIComponent component, String fullPathToFile) {
+        FileContent srcContent = getFileContent(fullPathToFile, true);
+        UIComponent tabs = component.getFacet("static-tabs");
+        if (tabs instanceof Tab) {
+            attach((Tab) tabs, srcContent);
+        } else if(tabs instanceof UIPanel) {
+            for(UIComponent child : tabs.getChildren()) {
+                if (child instanceof Tab) {
+                    attach((Tab) child, srcContent);
+                }
+            }
+        }
+
+        List<FileContent> files = new ArrayList<>();
+        flatFileContent(srcContent, files);
+        return files;
+    }
+
+    public static final FileContent getFileContent(String fullPathToFile, Boolean readBeans) {
         try {
             // Finding in WEB ...
             FacesContext fc = FacesContext.getCurrentInstance();
@@ -39,20 +59,21 @@ public class ShowcaseUtil {
         return null;
     }
 
-    public static final List<FileContent> getCurrentFlatFilesContent() {
-        return getFlatFilesContent(Faces.getRequestServletPath());
+    private static final void attach(Tab tab, FileContent file) {
+        if (tab.isRendered()) {
+            Boolean flatten = BooleanUtils.toBooleanDefaultIfNull(
+                    Boolean.valueOf((String) tab.getAttributes().get("flatten")),
+                    false);
+            FileContent content = getFileContent(tab.getTitle(), flatten);
+            file.getAttached().add(content);
+        }
     }
 
-    public static final List<FileContent> getFlatFilesContent(String fullPathToFile) {
-        FileContent content = getFileContent(fullPathToFile, true);
-        List<FileContent> flatFiles = new ArrayList<>();
+    private static final void flatFileContent(FileContent source, List<FileContent> dest) {
+        dest.add(new FileContent(source.getTitle(), source.getValue(), source.getType(), Collections.<FileContent>emptyList()));
 
-        if (content != null) {
-            flatFiles.add(new FileContent(content.getTitle(), content.getValue(), content.getType(), Collections.<FileContent>emptyList()));
-            for (FileContent c : content.getAttached()) {
-                flatFiles.add(c);
-            }
+        for(FileContent file : source.getAttached()) {
+            flatFileContent(file, dest);
         }
-        return flatFiles;
     }
 }

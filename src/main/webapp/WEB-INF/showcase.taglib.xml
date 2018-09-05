@@ -7,25 +7,19 @@
     <namespace>http://primefaces.org/ui/showcase</namespace>
 
     <function>
-        <function-name>getFileContent</function-name>
+        <function-name>getFilesContent</function-name>
         <function-class>org.primefaces.showcase.util.ShowcaseUtil</function-class>
-        <function-signature>java.lang.String getFileContent(java.lang.String, java.lang.Boolean)</function-signature>
+        <function-signature>java.util.List getFilesContent(javax.faces.component.UIComponent,java.lang.String)</function-signature>
     </function>
 
     <function>
-        <function-name>getFlatFilesContent</function-name>
+        <function-name>getFileContent</function-name>
         <function-class>org.primefaces.showcase.util.ShowcaseUtil</function-class>
-        <function-signature>org.primefaces.showcase.util.FileContent getFlatFilesContent(java.lang.String)</function-signature>
+        <function-signature>org.primefaces.showcase.util.FileContent getFileContent(java.lang.String,java.lang.Boolean)</function-signature>
     </function>
-    
-    <function>
-        <function-name>getCurrentFlatFilesContent</function-name>
-        <function-class>org.primefaces.showcase.util.ShowcaseUtil</function-class>
-        <function-signature>org.primefaces.showcase.util.FileContent getCurrentFlatFilesContent()</function-signature>
-    </function>
-    
+
     <tag>
-        <source>tags/tabcode.xhtml</source>
-        <tag-name>tabcode</tag-name>
+        <source>tags/tabscode.xhtml</source>
+        <tag-name>tabscode</tag-name>
     </tag>
 </facelet-taglib>

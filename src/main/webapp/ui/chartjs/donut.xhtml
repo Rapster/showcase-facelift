@@ -1,7 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
@@ -15,79 +13,6 @@
 
     <ui:define name="implementation">
         <p:donutChart model="#{chartJsView.donutModel}" style="width: 100%; height: 500px;"/>
-    </ui:define>
-
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="bubble.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:donutChart model="\#{chartJsView.donutModel}" style="width: 100%; height: 500px;"/&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ChartJsView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.chartjs;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import org.primefaces.model.charts.ChartData;
-import org.primefaces.model.charts.donut.DonutChartDataSet;
-import org.primefaces.model.charts.donut.DonutChartModel;
-
-@ManagedBean
-public class ChartJsView implements Serializable {
-    
-    private DonutChartModel donutModel;
-
-    @PostConstruct
-    public void init() {
-        createDonutModel();
-    }
-
-    public void createDonutModel() {
-        donutModel = new DonutChartModel();
-        ChartData data = new ChartData();
-        
-        DonutChartDataSet dataSet = new DonutChartDataSet();
-        List&lt;Number&gt; values = new ArrayList&lt;&gt;();
-        values.add(300);
-        values.add(50);
-        values.add(100);
-        dataSet.setData(values);
-        
-        List&lt;String&gt; bgColors = new ArrayList&lt;&gt;();
-        bgColors.add("rgb(255, 99, 132)");
-        bgColors.add("rgb(54, 162, 235)");
-        bgColors.add("rgb(255, 205, 86)");
-        dataSet.setBackgroundColor(bgColors);
-        
-        data.addChartDataSet(dataSet);
-        List&lt;String&gt; labels = new ArrayList&lt;&gt;();
-        labels.add("Red");
-        labels.add("Blue");
-        labels.add("Yellow");
-        data.setLabels(labels);
-        
-        donutModel.setData(data);
-    }
-
-    public DonutChartModel getDonutModel() {
-        return donutModel;
-    }
-
-    public void setDonutModel(DonutChartModel donutModel) {
-        this.donutModel = donutModel;
-    }
-}
-                </pre>
-            </p:tab>
-
-        </p:tabView>
     </ui:define>
 
 </ui:composition>

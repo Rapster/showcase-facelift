@@ -4,8 +4,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:showcase="http://primefaces.org/ui/showcase"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:sc="http://primefaces.org/ui/showcase"
       xmlns:o="http://omnifaces.org/ui"
       lang="en">
 
@@ -49,20 +48,13 @@
                         <ui:insert name="implementation"></ui:insert>
                     </div>
                     <div class="content-section content-source">
-                        <p:outputPanel deferred="true">
-                            <o:cache key="#{facesContext.externalContext.requestServletPath}">
-                                <ui:insert name="source">
-                                    <p:tabView>
-
-                                        <ui:insert name="source-tabs">
-                                            <showcase:tabcode uri="#{facesContext.externalContext.requestServletPath}" flatten="true" />
-                                        </ui:insert>
-
-                                        <ui:insert name="more-source-tabs" />
-                                    </p:tabView>
-                                </ui:insert>
-                            </o:cache>
-                        </p:outputPanel>
+                        <o:cache key="#{facesContext.externalContext.requestServletPath}">
+                            <ui:insert name="source">
+                                <sc:tabscode value="#{sc:getFilesContent(component, facesContext.externalContext.requestServletPath)}">
+                                    <ui:insert name="more-source-tabs" />
+                                </sc:tabscode>
+                            </ui:insert>
+                        </o:cache>
                     </div>
                 </ui:insert>
             </div>

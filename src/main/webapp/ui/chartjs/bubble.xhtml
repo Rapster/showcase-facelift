@@ -1,7 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
@@ -15,68 +13,6 @@
 
     <ui:define name="implementation">
         <p:bubbleChart model="#{chartJsView.bubbleModel}" style="width: 100%; height: 500px;"/>
-    </ui:define>
-
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="bubble.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:bubbleChart model="\#{chartJsView.bubbleModel}" style="width: 100%; height: 500px;"/&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ChartJsView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.chartjs;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import org.primefaces.model.charts.ChartData;
-import org.primefaces.model.charts.bubble.BubbleChartDataSet;
-import org.primefaces.model.charts.bubble.BubbleChartModel;
-import org.primefaces.model.charts.bubble.BubblePoint;
-
-@ManagedBean
-public class ChartJsView implements Serializable {
-    
-    private BubbleChartModel bubbleModel;
-
-    @PostConstruct
-    public void init() {
-        createBubbleModel();
-    }
-
-    public void createBubbleModel() {
-        bubbleModel = new BubbleChartModel();
-        ChartData data = new ChartData();
-        
-        BubbleChartDataSet dataSet = new BubbleChartDataSet();
-        List&lt;BubblePoint&gt; values = new ArrayList&lt;&gt;();
-        values.add(new BubblePoint(20, 30, 15));
-        values.add(new BubblePoint(40, 10, 10));
-        dataSet.setData(values);
-        dataSet.setBackgroundColor("rgb(255, 99, 132)");
-        dataSet.setLabel("First Dataset");
-        data.addChartDataSet(dataSet);
-        bubbleModel.setData(data);
-    }
-
-    public BubbleChartModel getBubbleModel() {
-        return bubbleModel;
-    }
-
-    public void setBubbleModel(BubbleChartModel bubbleModel) {
-        this.bubbleModel = bubbleModel;
-    }
-}
-                </pre>
-            </p:tab>
-
-        </p:tabView>
     </ui:define>
 
 </ui:composition>

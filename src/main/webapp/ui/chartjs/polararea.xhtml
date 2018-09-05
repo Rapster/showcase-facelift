@@ -1,7 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
@@ -15,86 +13,6 @@
 
     <ui:define name="implementation">
         <p:polarAreaChart model="#{chartJsView.polarAreaModel}" style="width: 100%; height: 500px;"/>
-    </ui:define>
-
-    <ui:define name="source">
-        <p:tabView>
-            <p:tab title="polararea.xhtml">
-                <pre name="code" class="brush:xml">
-&lt;p:polarAreaChart model="\#{chartJsView.polarAreaModel}" style="width: 100%; height: 500px;"/&gt;
-                </pre>
-            </p:tab>
-
-            <p:tab title="ChartJsView.java">
-                <pre name="code" class="brush:java">
-package org.primefaces.showcase.view.chartjs;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import org.primefaces.model.charts.ChartData;
-import org.primefaces.model.charts.polar.PolarAreaChartDataSet;
-import org.primefaces.model.charts.polar.PolarAreaChartModel;
-
-@ManagedBean
-public class ChartJsView implements Serializable {
-
-    private PolarAreaChartModel polarAreaModel;
-
-    @PostConstruct
-    public void init() {
-        createPolarAreaModel();
-    }
-
-    private void createPolarAreaModel() {
-        polarAreaModel = new PolarAreaChartModel();
-        ChartData data = new ChartData();
-        
-        PolarAreaChartDataSet dataSet = new PolarAreaChartDataSet();
-        List&lt;Number&gt; values = new ArrayList&lt;&gt;();
-        values.add(11);
-        values.add(16);
-        values.add(7);
-        values.add(3);
-        values.add(14);
-        dataSet.setData(values);
-        
-        List&lt;String&gt; bgColors = new ArrayList&lt;&gt;();
-        bgColors.add("rgb(255, 99, 132)");
-        bgColors.add("rgb(75, 192, 192)");
-        bgColors.add("rgb(255, 205, 86)");
-        bgColors.add("rgb(201, 203, 207)");
-        bgColors.add("rgb(54, 162, 235)");
-        dataSet.setBackgroundColor(bgColors);
-        
-        data.addChartDataSet(dataSet);
-        List&lt;String&gt; labels = new ArrayList&lt;&gt;();
-        labels.add("Red");
-        labels.add("Green");
-        labels.add("Yellow");
-        labels.add("Grey");
-        labels.add("Blue");
-        data.setLabels(labels);
-        
-        polarAreaModel.setData(data);
-    }
-
-    public PolarAreaChartModel getPolarAreaModel() {
-        return polarAreaModel;
-    }
-
-    public void setPolarAreaModel(PolarAreaChartModel polarAreaModel) {
-        this.polarAreaModel = polarAreaModel;
-    }
-}
-
-                </pre>
-            </p:tab>
-
-        </p:tabView>
     </ui:define>
 
 </ui:composition>

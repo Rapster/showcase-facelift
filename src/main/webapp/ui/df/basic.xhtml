@@ -3,7 +3,6 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:showcase="http://primefaces.org/ui/showcase"
                 template="/WEB-INF/template.xhtml">
 
     <ui:define name="title">
@@ -24,7 +23,9 @@
     </ui:define>
 
     <ui:define name="more-source-tabs">
-        <showcase:tabcode uri="/ui/df/viewCars.xhtml" flatten="true" />
+        <p:tab title="/ui/df/viewCars.xhtml">
+            <f:attribute name="flatten" value="true" />
+        </p:tab>
     </ui:define>
 
 </ui:composition>
