@@ -3,15 +3,19 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
 
+    <!-- EXAMPLE-SOURCE-START -->
+
     <p:tabView var="entry" value="#{value}">
         <p:tab title="#{entry.title}" >
-             <pre name="code" class="brush:#{entry.type}">
-                 #{entry.value}
-             </pre>
+            <p:cache region="sources" key="#{entry}">
+                <pre name="code" class="brush:#{entry.type}">#{entry.value}</pre>
+            </p:cache>
         </p:tab>
 
         <f:facet name="static-tabs">
             <ui:insert />
         </f:facet>
     </p:tabView>
+
+    <!-- EXAMPLE-SOURCE-END -->
 </ui:composition>

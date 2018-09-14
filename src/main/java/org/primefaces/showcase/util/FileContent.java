@@ -1,5 +1,6 @@
 package org.primefaces.showcase.util;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,15 +10,15 @@ import java.util.List;
  * @version $Revision$
  * @since 6.3
  */
-public class FileContent {
+public class FileContent implements Serializable {
 
-    private String title;
+    private final String title;
 
-    private String value;
+    private final String value;
 
-    private String type;
+    private final String type;
 
-    private List<FileContent> attached;
+    private final List<FileContent> attached;
 
     public FileContent(String title, String value, String type, List<FileContent> attached) {
         this.title = title;

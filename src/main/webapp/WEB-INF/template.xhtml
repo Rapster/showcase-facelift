@@ -5,84 +5,82 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:sc="http://primefaces.org/ui/showcase"
-      xmlns:o="http://omnifaces.org/ui"
       lang="en">
 
-    <h:head>
-        <f:facet name="first">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-            <meta name="apple-mobile-web-app-capable" content="yes" />
-        </f:facet>
-        <title>PrimeFaces Showcase</title>
-        
-        <h:outputStylesheet name="css/sh.css" library="showcase" />
-        <h:outputStylesheet name="css/nanoscroller.css" library="showcase" />
-        <h:outputStylesheet name="css/primeflex.css" library="showcase" />
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+    </f:facet>
+    <title>PrimeFaces Showcase</title>
 
-        
-        <h:outputScript name="jquery/jquery.js" library="primefaces" />
-        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
-        <h:outputScript name="script/nanoscroller.js" library="showcase" />
-        <h:outputScript name="script/layout.js" library="showcase" />
-        
-        <ui:insert name="head"/>
-    </h:head>
+    <h:outputStylesheet name="css/sh.css" library="showcase"/>
+    <h:outputStylesheet name="css/nanoscroller.css" library="showcase"/>
+    <h:outputStylesheet name="css/primeflex.css" library="showcase"/>
 
-    <h:body>
-        <div class="layout-wrapper">
-            <ui:include src="./topbar.xhtml"></ui:include>
-            <ui:include src="./menu.xhtml"></ui:include>
 
-            <div class="layout-content">
-                <ui:insert name="content">
-                    <div class="content-section content-submenu">
-                        <ui:insert name="submenu"></ui:insert>
-                    </div>
-                    <div class="content-section content-introduction">
-                        <h1><ui:insert name="title"></ui:insert></h1>
-                        <p><ui:insert name="description"></ui:insert></p>
-                    </div>
-                    <div class="content-section content-implementation">
-                        <ui:insert name="implementation"></ui:insert>
-                    </div>
-                    <div class="content-section content-source">
-                        <o:cache key="#{facesContext.externalContext.requestServletPath}">
-                            <ui:insert name="source">
-                                <sc:tabscode value="#{sc:getFilesContent(component, facesContext.externalContext.requestServletPath)}">
-                                    <ui:insert name="more-source-tabs" />
-                                </sc:tabscode>
-                            </ui:insert>
-                        </o:cache>
-                    </div>
-                </ui:insert>
-            </div>
-            
-            <ui:include src="./footer.xhtml"></ui:include>
-            <div class="layout-mask"></div>
+    <h:outputScript name="jquery/jquery.js" library="primefaces"/>
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+    <h:outputScript name="script/nanoscroller.js" library="showcase"/>
+    <h:outputScript name="script/layout.js" library="showcase"/>
 
+    <ui:insert name="head"/>
+</h:head>
+
+<h:body>
+    <div class="layout-wrapper">
+        <ui:include src="./topbar.xhtml"></ui:include>
+        <ui:include src="./menu.xhtml"></ui:include>
+
+        <div class="layout-content">
+            <ui:insert name="content">
+                <div class="content-section content-submenu">
+                    <ui:insert name="submenu"></ui:insert>
+                </div>
+                <div class="content-section content-introduction">
+                    <h1><ui:insert name="title"></ui:insert></h1>
+                    <p><ui:insert name="description"></ui:insert></p>
+                </div>
+                <div class="content-section content-implementation">
+                    <ui:insert name="implementation"></ui:insert>
+                </div>
+                <div class="content-section content-source">
+                    <ui:insert name="source">
+                        <sc:tabscode
+                                value="#{sc:getFilesContent(facesContext, component, facesContext.externalContext.requestServletPath)}">
+                            <ui:insert name="more-source-tabs"/>
+                        </sc:tabscode>
+                    </ui:insert>
+                </div>
+            </ui:insert>
         </div>
-        
-        <ui:insert name="status">
-            <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
-                <f:facet name="start">
-                    <i class="fa fa-3x fa-circle-o-notch fa-spin ajax-loader" aria-hidden="true"></i>
-                </f:facet>
 
-                <f:facet name="complete">
-                    <h:outputText value="" />
-                </f:facet>
-            </p:ajaxStatus>
-        </ui:insert>
-        
-        <ui:insert name="highlight">
-            <h:outputScript name="showcase/script/sh.js" target="body"/>
-        </ui:insert>
-        
-        <ui:insert name="body"></ui:insert>
-        
-        <h:outputStylesheet name="css/layout.css" library="showcase" />
-    </h:body>
+        <ui:include src="./footer.xhtml"></ui:include>
+        <div class="layout-mask"></div>
+
+    </div>
+
+    <ui:insert name="status">
+        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+            <f:facet name="start">
+                <i class="fa fa-3x fa-circle-o-notch fa-spin ajax-loader" aria-hidden="true"></i>
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value=""/>
+            </f:facet>
+        </p:ajaxStatus>
+    </ui:insert>
+
+    <ui:insert name="highlight">
+        <h:outputScript name="showcase/script/sh.js" target="body"/>
+    </ui:insert>
+
+    <ui:insert name="body"></ui:insert>
+
+    <h:outputStylesheet name="css/layout.css" library="showcase"/>
+</h:body>
 
 </html>

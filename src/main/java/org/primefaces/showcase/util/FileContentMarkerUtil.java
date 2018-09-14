@@ -22,12 +22,12 @@ import org.omnifaces.util.Faces;
  */
 public class FileContentMarkerUtil {
 
-    private static FileContentSettings javaFileSettings = new FileContentSettings()
+    private static final FileContentSettings javaFileSettings = new FileContentSettings()
             .setType("java")
             .setStartMarkers("@ManagedBean", "@RequestScoped", "@ViewScoped", "@SessionScoped", "@FacesConverter", "@Target", " class ", " enum ")
             .setIncludeMarker(true);
 
-    private static FileContentSettings xhtmlFileSettings = new FileContentSettings()
+    private static final FileContentSettings xhtmlFileSettings = new FileContentSettings()
             .setType("xml")
             .setStartMarkers("EXAMPLE-SOURCE-START", "<ui:define name=\"implementation\">", "<ui:define name=\"head\">")
             .setEndMarkers("EXAMPLE-SOURCE-END", "</ui:define>")
@@ -54,7 +54,8 @@ public class FileContentMarkerUtil {
         StringBuilder content = new StringBuilder();
         List<FileContent> javaFiles = new ArrayList<>();
 
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (InputStreamReader ir = new InputStreamReader(inputStream);
+             BufferedReader br = new BufferedReader(ir)) {
             String line;
             boolean started = false;
 
@@ -69,12 +70,16 @@ public class FileContentMarkerUtil {
                 // if is before first end marker
                 if (started && containMarker(line, settings.getEndMarkers())) {
                     started = false;
+                    content.append("\n");
                     continue;
                 }
 
+                content.append("\n");
+                content.append(line);
+
                 if (readBeans && line.contains("#{")) {
                     Matcher m = Pattern.compile("#\\{\\w*?\\s?(\\w+)[\\.\\[].*\\}").matcher(line.trim());
-                    while(m.find()) {
+                    while (m.find()) {
                         String group = m.group(1);
                         Object bean = Faces.evaluateExpressionGet("#{" + group + "}");
                         if (bean != null && !ClassUtils.isPrimitiveOrWrapper(bean.getClass())) {
@@ -82,17 +87,14 @@ public class FileContentMarkerUtil {
                             if (!javaFiles.contains(new FileContent(javaFileName, null, null, null))) {
                                 String path = "/" + StringUtils.replaceAll(bean.getClass().getName(), "\\.", "/") + ".java";
                                 FileContent javaContent = readFileContent(javaFileName,
-                                                                          FileContentMarkerUtil.class.getResourceAsStream(path),
-                                                                          javaFileSettings,
-                                                                          false);
+                                        FileContentMarkerUtil.class.getResourceAsStream(path),
+                                        javaFileSettings,
+                                        false);
                                 javaFiles.add(javaContent);
                             }
                         }
                     }
                 }
-
-                content.append("\n");
-                content.append(line);
             }
         }
 

@@ -1,15 +1,18 @@
 package org.primefaces.showcase.util;
 
-import org.apache.commons.lang3.BooleanUtils;
-import org.primefaces.component.tabview.Tab;
-
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIPanel;
-import javax.faces.context.FacesContext;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIPanel;
+import javax.faces.context.FacesContext;
+
+import org.apache.commons.lang3.BooleanUtils;
+import org.primefaces.cache.CacheProvider;
+import org.primefaces.component.tabview.Tab;
+import org.primefaces.context.PrimeApplicationContext;
 
 /**
  * ShowcaseUtil
@@ -20,21 +23,19 @@ import java.util.List;
  */
 public class ShowcaseUtil {
 
-    public static final List<FileContent> getFilesContent(UIComponent component, String fullPathToFile) {
-        FileContent srcContent = getFileContent(fullPathToFile, true);
-        UIComponent tabs = component.getFacet("static-tabs");
-        if (tabs instanceof Tab) {
-            attach((Tab) tabs, srcContent);
-        } else if(tabs instanceof UIPanel) {
-            for(UIComponent child : tabs.getChildren()) {
-                if (child instanceof Tab) {
-                    attach((Tab) child, srcContent);
-                }
-            }
-        }
+    public static final List<FileContent> getFilesContent(FacesContext fc, UIComponent component, String fullPathToFile) {
+        CacheProvider provider = PrimeApplicationContext.getCurrentInstance(fc).getCacheProvider();
+        List<FileContent> files = (List<FileContent>) provider.get("contents", fullPathToFile);
 
-        List<FileContent> files = new ArrayList<>();
-        flatFileContent(srcContent, files);
+        if (files == null) {
+            FileContent srcContent = getFileContent(fullPathToFile, true);
+            UIComponent tabs = component.getFacet("static-tabs");
+            attach(tabs, srcContent);
+            files = new ArrayList<>();
+            flatFileContent(srcContent, files);
+
+            provider.put("contents", fullPathToFile, files);
+        }
         return files;
     }
 
@@ -59,13 +60,18 @@ public class ShowcaseUtil {
         return null;
     }
 
-    private static final void attach(Tab tab, FileContent file) {
-        if (tab.isRendered()) {
+    private static final void attach(UIComponent component, FileContent file) {
+        if (component instanceof Tab && component.isRendered()) {
             Boolean flatten = BooleanUtils.toBooleanDefaultIfNull(
-                    Boolean.valueOf((String) tab.getAttributes().get("flatten")),
+                    Boolean.valueOf((String) component.getAttributes().get("flatten")),
                     false);
-            FileContent content = getFileContent(tab.getTitle(), flatten);
+            FileContent content = getFileContent(((Tab) component).getTitle(), flatten);
             file.getAttached().add(content);
+        }
+        else if (component instanceof UIPanel) {
+            for (UIComponent child : component.getChildren()) {
+                attach((Tab) child, file);
+            }
         }
     }
 

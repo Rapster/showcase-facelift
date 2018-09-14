@@ -10,6 +10,7 @@ package org.primefaces.showcase.util;
 public class FileContentSettings {
     private String[] startMarkers = null;
     private String[] endMarkers = null;
+    private String[] excludeMarkers = null;
     private boolean showLineWithMarker = false;
     private boolean includeMarker = false;
     private String type;
@@ -19,26 +20,26 @@ public class FileContentSettings {
         return startMarkers;
     }
 
-    public String[] getEndMarkers() {
-        if (endMarkers == null) return new String[0];
-        return endMarkers;
-    }
-
-    public boolean isShowLineWithMarker() {
-        return showLineWithMarker;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public boolean isIncludeMarker() {
-        return includeMarker;
-    }
-
     public FileContentSettings setStartMarkers(String... startMarkers) {
         this.startMarkers = startMarkers;
         return this;
+    }
+
+    public String[] getExcludeMarkers() {
+        if (excludeMarkers == null) return new String[0];
+        return excludeMarkers;
+    }
+
+    public FileContentSettings setExcludeMarkers(String... excludeMarkers) {
+        this.excludeMarkers = excludeMarkers;
+        return this;
+    }
+
+    public String[] getEndMarkers() {
+        if (endMarkers == null) {
+            return new String[0];
+        }
+        return endMarkers;
     }
 
     public FileContentSettings setEndMarkers(String... endMarkers) {
@@ -46,18 +47,30 @@ public class FileContentSettings {
         return this;
     }
 
+    public boolean isShowLineWithMarker() {
+        return showLineWithMarker;
+    }
+
     public FileContentSettings setShowLineWithMarker(boolean showLineWithMarker) {
         this.showLineWithMarker = showLineWithMarker;
         return this;
     }
 
-    public FileContentSettings setIncludeMarker(boolean includeMarker) {
-        this.includeMarker = includeMarker;
-        return this;
+    public String getType() {
+        return type;
     }
 
     public FileContentSettings setType(String type) {
         this.type = type;
+        return this;
+    }
+
+    public boolean isIncludeMarker() {
+        return includeMarker;
+    }
+
+    public FileContentSettings setIncludeMarker(boolean includeMarker) {
+        this.includeMarker = includeMarker;
         return this;
     }
 }
