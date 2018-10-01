@@ -49,7 +49,7 @@
                 <div class="content-section content-source">
                     <ui:insert name="source">
                         <sc:tabscode
-                                value="#{sc:getFilesContent(facesContext, component, facesContext.externalContext.requestServletPath)}">
+                                value="#{sc:getFilesContent(facesContext.externalContext.requestServletPath, true)}">
                             <ui:insert name="more-source-tabs"/>
                         </sc:tabscode>
                     </ui:insert>

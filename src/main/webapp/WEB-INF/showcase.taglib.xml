@@ -9,14 +9,7 @@
     <function>
         <function-name>getFilesContent</function-name>
         <function-class>org.primefaces.showcase.util.ShowcaseUtil</function-class>
-        <function-signature>java.util.List getFilesContent(javax.faces.context.FacesContext,javax.faces.component.UIComponent,java.lang.String)
-        </function-signature>
-    </function>
-
-    <function>
-        <function-name>getFileContent</function-name>
-        <function-class>org.primefaces.showcase.util.ShowcaseUtil</function-class>
-        <function-signature>org.primefaces.showcase.util.FileContent getFileContent(java.lang.String,java.lang.Boolean)</function-signature>
+        <function-signature>java.util.List getFilesContent(java.lang.String,java.lang.Boolean))</function-signature>
     </function>
 
     <tag>

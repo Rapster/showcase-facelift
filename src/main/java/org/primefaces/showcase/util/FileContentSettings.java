@@ -8,51 +8,32 @@ package org.primefaces.showcase.util;
  * @since 6.3
  */
 public class FileContentSettings {
-    private String[] startMarkers = null;
-    private String[] endMarkers = null;
-    private String[] excludeMarkers = null;
-    private boolean showLineWithMarker = false;
-    private boolean includeMarker = false;
+
+    private Marker[] startMarkers = null;
+    private Marker[] endMarkers = null;
     private String type;
 
-    public String[] getStartMarkers() {
-        if (startMarkers == null) return new String[0];
+    public Marker[] getStartMarkers() {
+        if (startMarkers == null) {
+            return new Marker[0];
+        }
         return startMarkers;
     }
 
-    public FileContentSettings setStartMarkers(String... startMarkers) {
+    public FileContentSettings setStartMarkers(Marker... startMarkers) {
         this.startMarkers = startMarkers;
         return this;
     }
 
-    public String[] getExcludeMarkers() {
-        if (excludeMarkers == null) return new String[0];
-        return excludeMarkers;
-    }
-
-    public FileContentSettings setExcludeMarkers(String... excludeMarkers) {
-        this.excludeMarkers = excludeMarkers;
-        return this;
-    }
-
-    public String[] getEndMarkers() {
+    public Marker[] getEndMarkers() {
         if (endMarkers == null) {
-            return new String[0];
+            return new Marker[0];
         }
         return endMarkers;
     }
 
-    public FileContentSettings setEndMarkers(String... endMarkers) {
+    public FileContentSettings setEndMarkers(Marker... endMarkers) {
         this.endMarkers = endMarkers;
-        return this;
-    }
-
-    public boolean isShowLineWithMarker() {
-        return showLineWithMarker;
-    }
-
-    public FileContentSettings setShowLineWithMarker(boolean showLineWithMarker) {
-        this.showLineWithMarker = showLineWithMarker;
         return this;
     }
 
@@ -62,15 +43,6 @@ public class FileContentSettings {
 
     public FileContentSettings setType(String type) {
         this.type = type;
-        return this;
-    }
-
-    public boolean isIncludeMarker() {
-        return includeMarker;
-    }
-
-    public FileContentSettings setIncludeMarker(boolean includeMarker) {
-        this.includeMarker = includeMarker;
         return this;
     }
 }

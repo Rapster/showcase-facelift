@@ -10,6 +10,8 @@ import javax.faces.component.UIPanel;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.lang3.BooleanUtils;
+import org.omnifaces.util.Components;
+import org.omnifaces.util.Faces;
 import org.primefaces.cache.CacheProvider;
 import org.primefaces.component.tabview.Tab;
 import org.primefaces.context.PrimeApplicationContext;
@@ -23,54 +25,60 @@ import org.primefaces.context.PrimeApplicationContext;
  */
 public class ShowcaseUtil {
 
-    public static final List<FileContent> getFilesContent(FacesContext fc, UIComponent component, String fullPathToFile) {
-        CacheProvider provider = PrimeApplicationContext.getCurrentInstance(fc).getCacheProvider();
-        List<FileContent> files = (List<FileContent>) provider.get("contents", fullPathToFile);
+    public static final List<FileContent> getFilesContent(String fullPath, Boolean readBeans) {
+        CacheProvider provider = PrimeApplicationContext.getCurrentInstance(Faces.getContext()).getCacheProvider();
+        List<FileContent> files = (List<FileContent>) provider.get("contents", fullPath);
 
         if (files == null) {
-            FileContent srcContent = getFileContent(fullPathToFile, true);
-            UIComponent tabs = component.getFacet("static-tabs");
-            attach(tabs, srcContent);
+            FileContent srcContent = getFileContent(fullPath, readBeans);
+            UIComponent tabs = Components.getCurrentComponent().getFacet("static-tabs");
+            if (tabs != null) {
+                attach(tabs, srcContent);
+            }
             files = new ArrayList<>();
             flatFileContent(srcContent, files);
 
-            provider.put("contents", fullPathToFile, files);
+            provider.put("contents", fullPath, files);
         }
+
         return files;
     }
 
-    public static final FileContent getFileContent(String fullPathToFile, Boolean readBeans) {
+    // EXCLUDE-SOURCE-START
+    private static final FileContent getFileContent(String fullPath, Boolean readBeans) {
         try {
             // Finding in WEB ...
             FacesContext fc = FacesContext.getCurrentInstance();
-            InputStream is = fc.getExternalContext().getResourceAsStream(fullPathToFile);
+            InputStream is = fc.getExternalContext().getResourceAsStream(fullPath);
             if (is != null) {
-                return FileContentMarkerUtil.readFileContent(fullPathToFile, is, readBeans);
+                return FileContentMarkerUtil.readFileContent(fullPath, is, readBeans);
             }
 
             // Finding in ClassPath ...
-            is = ShowcaseUtil.class.getResourceAsStream(fullPathToFile);
+            is = ShowcaseUtil.class.getResourceAsStream(fullPath);
             if (is != null) {
-                return FileContentMarkerUtil.readFileContent(fullPathToFile, is, readBeans);
+                return FileContentMarkerUtil.readFileContent(fullPath, is, readBeans);
             }
         } catch (Exception e) {
-            throw new IllegalStateException("Internal error: file " + fullPathToFile + " could not be read", e);
+            throw new IllegalStateException("Internal error: file " + fullPath + " could not be read", e);
         }
 
         return null;
     }
 
     private static final void attach(UIComponent component, FileContent file) {
-        if (component instanceof Tab && component.isRendered()) {
-            Boolean flatten = BooleanUtils.toBooleanDefaultIfNull(
-                    Boolean.valueOf((String) component.getAttributes().get("flatten")),
-                    false);
-            FileContent content = getFileContent(((Tab) component).getTitle(), flatten);
-            file.getAttached().add(content);
-        }
-        else if (component instanceof UIPanel) {
-            for (UIComponent child : component.getChildren()) {
-                attach((Tab) child, file);
+        if (component.isRendered()) {
+            if (component instanceof Tab) {
+                Boolean flatten = BooleanUtils.toBooleanDefaultIfNull(
+                        Boolean.valueOf((String) component.getAttributes().get("flatten")),
+                        false);
+                FileContent content = getFileContent(((Tab) component).getTitle(), flatten);
+                file.getAttached().add(content);
+            }
+            else if (component instanceof UIPanel) {
+                for (UIComponent child : component.getChildren()) {
+                    attach(child, file);
+                }
             }
         }
     }
@@ -82,4 +90,5 @@ public class ShowcaseUtil {
             flatFileContent(file, dest);
         }
     }
+    // EXCLUDE-SOURCE-END
 }

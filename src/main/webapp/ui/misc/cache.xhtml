@@ -10,11 +10,19 @@
 
     <ui:define name="description">
         Cache component is used to reduce page load time by caching the content in a global cache after the initial rendering. Various
-        cache providers are supported like ehcache and hazelcast. In this example, toolbar component is cached and output would be retrieved from cache.
+        cache providers are supported like ehcache and hazelcast. Showcase use actually this component to render source examples for every PrimeFaces components.
+        Why? Because parsing an xhtml file takes time, and since the rendering won't change during the whole lifecycle of the application, it's better to cache the content.
+        An API is also provided so you can use the cache programmatically.
+
+        <ul style="color: white;">
+            <li>tabscode.xhtml demonstrate how to use cache component declaratively</li>
+            <li>ShowcaseUtil demonstrate how to use cache API</li>
+        </ul>
+
     </ui:define>
 
     <ui:define name="source">
-        <sc:tabscode value="#{sc:getFilesContent(facesContext, component, '/WEB-INF/tags/tabscode.xhtml')}">
+        <sc:tabscode value="#{sc:getFilesContent('/WEB-INF/tags/tabscode.xhtml', false)}">
             <p:tab title="/org/primefaces/showcase/util/ShowcaseUtil.java"/>
         </sc:tabscode>
     </ui:define>
