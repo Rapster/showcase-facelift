@@ -50,18 +50,15 @@
                 <f:facet name="header">
                     Basic
                 </f:facet>
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+
+                <p:column headerText="Id" field="id" />
+
+                <p:column headerText="Year" field="year" />
+
+                <p:column headerText="Brand" field="brand" />
+
+                <p:column headerText="Color" field="color" />
+
                 <p:column style="width:32px;text-align: center">
                      <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="pi pi-search" title="View">
                         <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
@@ -73,18 +70,14 @@
                 <f:facet name="header">
                     Single with Row Click
                 </f:facet>
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+                <p:column headerText="Id" field="id" />
+
+                <p:column headerText="Year" field="year" />
+
+                <p:column headerText="Brand" field="brand" />
+
+                <p:column headerText="Color" field="color" />
+
                 <f:facet name="footer">
                     <p:commandButton process="singleDT" update=":form:carDetail" icon="pi pi-search" value="View" oncomplete="PF('carDialog').show()" />
                 </f:facet>
@@ -94,38 +87,31 @@
                 <f:facet name="header">
                     Select Events
                 </f:facet>
+
                 <p:ajax event="rowSelect" listener="#{dtSelectionView.onRowSelect}" update=":form:msgs" />
                 <p:ajax event="rowUnselect" listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs" />
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+
+                <p:column headerText="Id" field="id" />
+
+                <p:column headerText="Year" field="year" />
+
+                <p:column headerText="Brand" field="brand" />
+
+                <p:column headerText="Color" field="color" />
             </p:dataTable>
             
             <p:dataTable id="multipleDT" var="car" value="#{dtSelectionView.cars4}" selectionMode="multiple" selection="#{dtSelectionView.selectedCars}" rowKey="#{car.id}">
                 <f:facet name="header">
                     Multiple with Meta and Shift keys
                 </f:facet>
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+
+                <p:column headerText="Id" field="id" />
+
+                <p:column headerText="Year" field="year" />
+
+                <p:column headerText="Brand" field="brand" />
+
+                <p:column headerText="Color" field="color" />
                 <f:facet name="footer">
                     <p:commandButton process="multipleDT" update=":form:multiCarDetail" icon="pi pi-search" value="View" oncomplete="PF('multiCarDialog').show()" />
                 </f:facet>
@@ -135,19 +121,17 @@
                 <f:facet name="header">
                     RadioButton
                 </f:facet>
+
                 <p:column selectionMode="single" style="width:16px;text-align:center"/>
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+
+                <p:column headerText="Id" field="id" />
+
+                <p:column headerText="Year" field="year" />
+
+                <p:column headerText="Brand" field="brand" />
+
+                <p:column headerText="Color" field="color" />
+
                 <f:facet name="footer">
                     <p:commandButton process="radioDT" update=":form:carDetail" icon="pi pi-search" value="View" oncomplete="PF('carDialog').show()" />
                 </f:facet>
@@ -157,19 +141,17 @@
                 <f:facet name="header">
                     Checkbox
                 </f:facet>
+
                 <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
-                <p:column headerText="Id">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
+
+                <p:column headerText="Id" field="id" />
+
+                <p:column headerText="Year" field="year" />
+
+                <p:column headerText="Brand" field="brand" />
+
+                <p:column headerText="Color" field="color" />
+
                 <f:facet name="footer">
                     <p:commandButton process="checkboxDT" update=":form:multiCarDetail" icon="pi pi-search" value="View" oncomplete="PF('multiCarDialog').show()" />
                 </f:facet>

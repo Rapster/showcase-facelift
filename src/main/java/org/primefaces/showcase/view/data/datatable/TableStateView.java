@@ -80,16 +80,7 @@ public class TableStateView implements Serializable {
     }
 
     public void clearTableState() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        String viewId = context.getViewRoot().getViewId();
-        PrimeFaces.current().multiViewState().clear(viewId, (clientId) -> {
-            //reset the DataTable-instances on the current view
-            context.getViewRoot().invokeOnComponent(context, clientId, (fc, component) -> {
-                ((DataTable) component).reset();
-            });
-
-            showMessage(clientId);
-        });
+        PrimeFaces.current().multiViewState().clearAll(true, this::showMessage);
     }
 
     private void showMessage(String clientId) {

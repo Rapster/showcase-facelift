@@ -78,14 +78,7 @@ public class DataListView implements Serializable {
     public void clearMultiViewState() {
         FacesContext context = FacesContext.getCurrentInstance();
         String viewId = context.getViewRoot().getViewId();
-        PrimeFaces.current().multiViewState().clear(viewId, (clientId) -> {
-            //reset the DataList-instances on the current view
-            context.getViewRoot().invokeOnComponent(context, clientId, (fc, component) -> {
-                ((DataList) component).setFirst(0);
-            });
-
-            showMessage(clientId);
-        });
+        PrimeFaces.current().multiViewState().clearAll(viewId, true, this::showMessage);
     }
 
     private void showMessage(String clientId) {

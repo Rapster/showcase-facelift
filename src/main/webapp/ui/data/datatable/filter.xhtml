@@ -58,11 +58,9 @@
                     </p:outputPanel>
                 </f:facet>
 
-                <p:column filterBy="#{car.id}" headerText="Id" footerText="contains" filterMatchMode="contains">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
+                <p:column field="id" headerText="Id" footerText="contains" filterMatchMode="contains" />
 
-                <p:column filterBy="#{car.year}" headerText="Year" footerText="lte" filterMatchMode="lte">
+                <p:column field="year" headerText="Year" footerText="lte" filterMatchMode="lte">
                     <f:facet name="filter">
                         <p:spinner onchange="PF('carsTable1').filter()" styleClass="year-spinner custom-filter">
                             <f:converter converterId="javax.faces.Integer" />
@@ -71,7 +69,7 @@
                     <h:outputText value="#{car.year}" />
                 </p:column>
 
-                <p:column filterBy="#{car.brand}" headerText="Brand" footerText="exact" filterMatchMode="exact">
+                <p:column field="brand" headerText="Brand" footerText="exact" filterMatchMode="exact">
                     <f:facet name="filter">
                         <p:selectOneMenu onchange="PF('carsTable1').filter()" styleClass="custom-filter">
                             <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
@@ -81,7 +79,7 @@
                     <h:outputText value="#{car.brand}" />
                 </p:column>
 
-                <p:column filterBy="#{car.color}" headerText="Color" footerText="in" filterMatchMode="in">
+                <p:column field="color" headerText="Color" footerText="in" filterMatchMode="in">
                     <f:facet name="filter">
                         <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable1').filter()" scrollHeight="150" styleClass="custom-filter">
                             <f:selectItems value="#{dtFilterView.colors}" />
@@ -90,7 +88,7 @@
                     <h:outputText value="#{car.color}" />
                 </p:column>
 
-                <p:column filterBy="#{car.sold}" headerText="Status" footerText="equals" filterMatchMode="equals">
+                <p:column field="sold" headerText="Status" footerText="equals" filterMatchMode="equals">
                     <f:facet name="filter">
                         <p:selectOneButton onchange="PF('carsTable1').filter()" styleClass="custom-filter">
                             <f:converter converterId="javax.faces.Boolean" />
@@ -102,7 +100,7 @@
                     <h:outputText value="#{car.sold ? 'Sold': 'Sale'}" />
                 </p:column>
 
-                <p:column filterBy="#{car.price}" headerText="Price" footerText="custom (min)" filterFunction="#{dtFilterView.filterByPrice}">
+                <p:column field="price" headerText="Price" footerText="custom (min)" filterFunction="#{dtFilterView.filterByPrice}">
                     <h:outputText value="#{car.price}">
                         <f:convertNumber currencySymbol="$" type="currency"/>
                     </h:outputText>
@@ -120,19 +118,19 @@
                     </p:outputPanel>
                 </f:facet>
 
-                <p:column headerText="Id">
+                <p:column headerText="Id" field="id">
                     <h:outputText value="#{car.id}" />
                 </p:column>
 
-                <p:column headerText="Year">
+                <p:column headerText="Year" field="year">
                     <h:outputText value="#{car.year}" />
                 </p:column>
 
-                <p:column headerText="Brand">
+                <p:column headerText="Brand" field="brand">
                     <h:outputText value="#{car.brand}" />
                 </p:column>
 
-                <p:column headerText="Color">
+                <p:column headerText="Color" field="color">
                     <h:outputText value="#{car.color}" />
                 </p:column>
 
@@ -140,7 +138,7 @@
                     <h:outputText value="#{car.sold ? 'Sold': 'Sale'}" />
                 </p:column>
 
-                <p:column headerText="Price">
+                <p:column headerText="Price" field="price">
                     <h:outputText value="#{car.price}">
                         <f:convertNumber currencySymbol="$" type="currency"/>
                     </h:outputText>

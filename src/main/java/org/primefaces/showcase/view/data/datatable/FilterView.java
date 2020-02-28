@@ -16,12 +16,16 @@
 package org.primefaces.showcase.view.data.datatable;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.model.FilterMeta;
 import org.primefaces.showcase.domain.Car;
 import org.primefaces.showcase.service.CarService;
 
@@ -42,6 +46,10 @@ public class FilterView implements Serializable {
     public void init() {
         cars1 = service.createCars(10);
         cars2 = service.createCars(10);
+    }
+
+    public Map<String, FilterMeta> getDefaultFilterBy() {
+        return Collections.singletonMap("brand", new FilterMeta("brand", "Ford"));
     }
 
     public boolean filterByPrice(Object value, Object filter, Locale locale) {

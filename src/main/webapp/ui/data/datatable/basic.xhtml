@@ -16,21 +16,13 @@
 
     <ui:define name="implementation">
         <p:dataTable var="car" value="#{dtBasicView.cars}">
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column>
+            <p:column headerText="Id" field="id" />
 
-            <p:column headerText="Year">
-                <h:outputText value="#{car.year}" />
-            </p:column>
+            <p:column headerText="Year" field="year" />
 
-            <p:column headerText="Brand">
-                <h:outputText value="#{car.brand}" />
-            </p:column>
+            <p:column headerText="Brand" field="brand" />
 
-            <p:column headerText="Color">
-                <h:outputText value="#{car.color}" />
-            </p:column>
+            <p:column headerText="Color" field="color" />
         </p:dataTable>
     </ui:define>
 

@@ -19,7 +19,7 @@
         
         <h:form>          
             <p:fileUpload listener="#{fileUploadView.handleFileUpload}" mode="advanced"
-                          update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                          update="messages" auto="true" sizeLimit="100000" virusScan="true"/>
                 
             <p:growl id="messages" showDetail="true" />        
         </h:form>
